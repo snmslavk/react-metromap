@@ -6,7 +6,7 @@ import PF from 'pathfinding';
 
 import ctrl from '../core/mainController';
 
-class mainMap extends Component {
+class MainMap extends Component {
   constructor() {
     super();
     this.stationsDict = {};
@@ -33,31 +33,64 @@ class mainMap extends Component {
       .then((html) => {
         let stationList = JSON.parse(html).data;
         this.fillDict(stationList);
-        this.findPath();
+        //this.findPath();
       })
       .catch((err) => console.error(err));
   }
   
   fillDict(stationList) {
+    var self = this;
     console.log('start filling dict');
     stationList.forEach(function(element) {
       element.circleLink = this.drawCircle(element.xreal,element.yreal);
+      var dictKey = `x${element.xmatrix}y${element.ymatrix}`;
       console.log(element);
-      this.stationsDict[`x${element.xmatrix}y${element.ymatrix}`] = element;
+      element.circleLink.onMouseDown = function(event) {
+        if (self.firstStation === null) {
+          self.firstStation = dictKey;
+          this.fillColor = 'red';
+        } else if (self.secondStation === null) {
+          self.secondStation = dictKey;
+          this.fillColor = 'red';
+          self.findPath();
+        } else if (self.firstStation !== null && self.secondStation !== null) {
+          self.clearSelection();
+          self.firstStation = dictKey;
+          self.secondStation = null;
+        }
+        console.log('first=');
+        console.log(self.firstStation);
+        console.log('second=');
+        console.log(self.secondStation);
+        console.log(dictKey);
+      }
+      this.stationsDict[dictKey] = element;
   
     }, this);
     console.log('stop filling dict');
   }
+
+  clearSelection() {
+    console.log('start clearing');
+    for (var prop in this.stationsDict) {
+      console.log("obj." + prop + " = " + this.stationsDict[prop]);
+      this.stationsDict[prop].circleLink.fillColor = 'black';
+    }
+    console.log('stop clearing');
+  }
   
   findPath() {
     console.log('start finding path');
+    this.clearSelection();
     var matrix = [
       [0, 0, 0, 0]
     ];
     
     var grid = new PF.Grid(matrix);
     var finder = new PF.AStarFinder();
-    var path = finder.findPath(3, 0, 0, 0, grid);
+    //var path = finder.findPath(3, 0, 0, 0, grid);
+    var path = finder.findPath(this.stationsDict[this.firstStation].xmatrix, this.stationsDict[this.firstStation].ymatrix, 
+      this.stationsDict[this.secondStation].xmatrix, this.stationsDict[this.secondStation].ymatrix, grid);
     var i=0;
     for (var i=0;i<path.length;i++) {
       if (i>0) {
@@ -69,7 +102,7 @@ class mainMap extends Component {
         station2.circleLink.fillColor = 'green';
       };
     }
-
+    this.props.onMapSelectStation('station1','station2');
     console.log('stop finding path');
   }
 
@@ -80,10 +113,17 @@ class mainMap extends Component {
       radius: 20,
       fillColor: 'black'
     });
-    cc.onMouseDown = function(event) {
-      console.log(self.stationsDict);
-      this.fillColor = 'red';
-    }
+    // cc.onMouseDown = function(event) {
+    //   // console.log(self.stationsDict);
+    //   // this.fillColor = 'red';
+    //   if (this.firstStation === null) {
+
+    //   } else if (this.secondStation === null) {
+
+    //   } else if (this.firstStation !== null && this.secondStation !== null) {
+    //     this.findPath();
+    //   }
+    // }
     return cc;
   };
   
@@ -95,6 +135,7 @@ class mainMap extends Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <div className="mainMap">
         <img src="prague_metro.svg" id="mainImage" style={{display: 'none'}} ></img>
@@ -110,4 +151,4 @@ class mainMap extends Component {
   }
 }
 
-export default mainMap;
+export default MainMap;
