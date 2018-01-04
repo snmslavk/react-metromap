@@ -9,16 +9,10 @@ import ctrl from '../core/mainController';
 class MainMap extends Component {
   constructor(props) {
     super(props);
-    // console.log('map props!!!')
-    // console.log(props);
-    // console.log(this.props);    
-    // console.log('map props!!!')
-    let {stationFrom,stationTo} = props;
     this.stationsDict = {};
-    this.firstStation = null;
-    this.secondStation = null;
+    this.firstStation = '';
+    this.secondStation = '';
     this.resultPath = null;
-    //this.stationList = stationList;
   }
     
   initMap(component) {
@@ -35,34 +29,29 @@ class MainMap extends Component {
     //   // this.drawCircle(100,100);
     // }
     this.getStationInformation();
+    this.findPath();
     this.drawStations();
     this.drawPath();
     this.drawSelection();
-    
-    //console.log('draw second');
-    // this.drawCircle(200,200);
 
-    //paper.view.draw();
+    paper.view.draw();
   }
 
   getStationInformation() {
-    // ctrl.getStations('/api/stations.json')
-    //   .then((html) => {
-    //     let stationList = JSON.parse(html).data;
-    //     this.fillDict(stationList);
-    //     //this.findPath();
-    //   })
-    //   .catch((err) => console.error(err));
     if (this.props.stationList.length > 0 && Object.keys(this.stationsDict).length === 0) {
       this.fillDict(this.props.stationList);
     }
   }
 
   drawSelection() {
+    console.log('selection draw');
+    //console.log(this.firstStation);
     if (typeof this.stationsDict[this.firstStation] !== "undefined") {
+      console.log('selection1 draw');
       this.stationsDict[this.firstStation].circleLink.fillColor = 'red';
     }
     if (typeof this.stationsDict[this.secondStation] !== "undefined") {
+      console.log('selection2 draw');
       this.stationsDict[this.secondStation].circleLink.fillColor = 'red';
     }
   }
@@ -74,39 +63,30 @@ class MainMap extends Component {
       console.log("obj." + prop + " = " + this.stationsDict[prop]);
       
       this.stationsDict[prop].circleLink = this.drawCircle(this.stationsDict[prop].xreal,this.stationsDict[prop].yreal);
-      //this.stationsDict[prop].circleLink.fillColor = 'red';
-      //let dictKey = prop;
       this.stationsDict[prop].circleLink.onMouseDown = function(event) {
-        if (self.firstStation === null) {
+        if (self.firstStation === '') {
           self.firstStation = prop;
-          //this.fillColor = 'red';
-        } else if (self.secondStation === null) {
+
+        } else if (self.secondStation === '') {
           self.secondStation = prop;
-          //this.fillColor = 'red';
-          self.findPath();
-        } else if (self.firstStation !== null && self.secondStation !== null) {
-          self.clearSelection();
+        } else if (self.firstStation !== '' && self.secondStation !== '') {
           self.firstStation = prop;
-          self.secondStation = null;
+          self.secondStation = '';
           self.resultPath = null;
         }
-        //this.fillColor = 'red';
+
         console.log('first=');
         console.log(self.firstStation);
         console.log('second=');
         console.log(self.secondStation);
-        // console.log('path=');
-        // console.log(self.secondStation);
 
-        //console.log(prop);
-        let tempStation1, tempStation2;
+        let tempStation1 = '';
+        let tempStation2 = '';
         if (typeof self.stationsDict[self.firstStation] !== "undefined") {
           tempStation1 =self.stationsDict[self.firstStation].name;
-          self.stationsDict[self.firstStation].circleLink.fillColor = 'red';
         }
         if (typeof self.stationsDict[self.secondStation] !== "undefined") {
           tempStation2 =self.stationsDict[self.secondStation].name;
-          self.stationsDict[self.secondStation].circleLink.fillColor = 'red';
         }
         self.props.onMapSelectStation(tempStation1,tempStation2);
       }
@@ -118,58 +98,42 @@ class MainMap extends Component {
     var self = this;
     console.log('start filling dict');
     stationList.forEach(function(element) {
-      //element.circleLink = this.drawCircle(element.xreal,element.yreal);
       var dictKey = `x${element.xmatrix}y${element.ymatrix}`;
-      //console.log(element);
-      // element.circleLink.onMouseDown = function(event) {
-      //   if (self.firstStation === null) {
-      //     self.firstStation = dictKey;
-      //     //this.fillColor = 'red';
-      //   } else if (self.secondStation === null) {
-      //     self.secondStation = dictKey;
-      //     //this.fillColor = 'red';
-      //     self.findPath();
-      //   } else if (self.firstStation !== null && self.secondStation !== null) {
-      //     self.clearSelection();
-      //     self.firstStation = dictKey;
-      //     self.secondStation = null;
-      //     this.resultPath = null;
-      //   }
-      //   //this.fillColor = 'red';
-      //   console.log('first=');
-      //   console.log(self.firstStation);
-      //   console.log('second=');
-      //   console.log(self.secondStation);
-      //   //console.log(dictKey);
-      //   let tempStation1, tempStation2;
-      //   if (typeof self.stationsDict[self.firstStation] !== "undefined") {
-      //     tempStation1 =self.stationsDict[self.firstStation].name;
-      //     //self.stationsDict[self.firstStation].circleLink.fillColor = 'red';
-      //   }
-      //   if (typeof self.stationsDict[self.secondStation] !== "undefined") {
-      //     tempStation2 =self.stationsDict[self.secondStation].name;
-      //     //self.stationsDict[self.secondStation].circleLink.fillColor = 'red';
-      //   }
-      //   self.props.onMapSelectStation(tempStation1,tempStation2);
-      // }
       this.stationsDict[dictKey] = element;
   
     }, this);
     console.log('stop filling dict');
   }
 
-  clearSelection() {
-    console.log('start clearing');
+  // clearSelection() {
+  //   console.log('start clearing');
+  //   for (var prop in this.stationsDict) {
+  //     console.log("obj." + prop + " = " + this.stationsDict[prop]);
+  //     this.stationsDict[prop].circleLink.fillColor = 'black';
+  //   }
+  //   console.log('stop clearing');
+  // }
+
+  findCoordStationByName(stationName) {
     for (var prop in this.stationsDict) {
-      console.log("obj." + prop + " = " + this.stationsDict[prop]);
-      this.stationsDict[prop].circleLink.fillColor = 'black';
+      if (this.stationsDict[prop].name === stationName) {
+        return prop;
+      }
     }
-    console.log('stop clearing');
+    return '';
   }
   
   findPath() {
     console.log('start finding path');
-    this.clearSelection();
+    if (this.firstStation === '' || this.secondStation === '') {
+      console.log('return');
+      return;
+    }
+    if (this.resultPath !== null) {
+      console.log(this.resultPath);
+      console.log('return');
+      return;
+    }
     var matrix = [
       [0, 0, 0, 0]
     ];
@@ -181,18 +145,6 @@ class MainMap extends Component {
       this.stationsDict[this.secondStation].xmatrix, this.stationsDict[this.secondStation].ymatrix, grid);
     console.log('path=');
     console.log(this.resultPath);
-    // var i=0;
-    // for (var i=0;i<path.length;i++) {
-    //   if (i>0) {
-    //     //console.log(this.stationsDict[`x${path[i][0]}y${path[i][1]}`]);
-    //     var station1 = this.stationsDict[`x${path[i-1][0]}y${path[i-1][1]}`];
-    //     var station2 = this.stationsDict[`x${path[i][0]}y${path[i][1]}`];
-    //     this.drawLine(station1.xreal,station1.yreal,station2.xreal,station2.yreal);
-    //     station1.circleLink.fillColor = 'green';
-    //     station2.circleLink.fillColor = 'green';
-    //   };
-    // }
-    //this.props.onMapSelectStation('station1','station2');
     this.props.onPathFound(this.resultPath.map((elem)=>{
       let station = this.stationsDict[`x${elem[0]}y${elem[1]}`];
       return station.name;
@@ -201,12 +153,13 @@ class MainMap extends Component {
   }
 
   drawPath() {
+    console.log('start draw path');
     if (this.resultPath === null) {
       return;
     }
     for (var i=0;i<this.resultPath.length;i++) {
       if (i>0) {
-        //console.log(this.stationsDict[`x${path[i][0]}y${path[i][1]}`]);
+        console.log(this.stationsDict[`x${this.resultPath[i][0]}y${this.resultPath[i][1]}`]);
         var station1 = this.stationsDict[`x${this.resultPath[i-1][0]}y${this.resultPath[i-1][1]}`];
         var station2 = this.stationsDict[`x${this.resultPath[i][0]}y${this.resultPath[i][1]}`];
         this.drawLine(station1.xreal,station1.yreal,station2.xreal,station2.yreal);
@@ -214,6 +167,7 @@ class MainMap extends Component {
         station2.circleLink.fillColor = 'green';
       };
     }
+    console.log('stop draw path');
   }
 
   drawCircle(x,y){
@@ -223,17 +177,6 @@ class MainMap extends Component {
       radius: 20,
       fillColor: 'black'
     });
-    // cc.onMouseDown = function(event) {
-    //   // console.log(self.stationsDict);
-    //   // this.fillColor = 'red';
-    //   if (this.firstStation === null) {
-
-    //   } else if (this.secondStation === null) {
-
-    //   } else if (this.firstStation !== null && this.secondStation !== null) {
-    //     this.findPath();
-    //   }
-    // }
     return cc;
   };
   
@@ -246,6 +189,15 @@ class MainMap extends Component {
 
   render() {
     console.log(this.props);
+    let {stationOne,stationTwo} = this.props;
+    var station1 = this.findCoordStationByName(stationOne);
+    var station2 = this.findCoordStationByName(stationTwo);
+    if (this.firstStation !== station1 || this.secondStation !== station2) {
+      this.resultPath = null;
+    };
+    this.firstStation = this.findCoordStationByName(stationOne);
+    this.secondStation = this.findCoordStationByName(stationTwo);
+    
     return (
       <div className="mainMap">
         <img src="prague_metro.svg" id="mainImage" style={{display: 'none'}} ></img>
