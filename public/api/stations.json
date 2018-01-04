@@ -4,7 +4,7 @@
         {
             "name": "Nemocnice Motol",
             "xmatrix": 13,
-            "ymatrix": 17,
+            "ymatrix": 7,
             "xreal": 257,
             "yreal": 453,
             "line": "b"
@@ -12,7 +12,7 @@
         {
             "name": "Petriny",
             "xmatrix": 13,
-            "ymatrix": 18,
+            "ymatrix": 8,
             "xreal": 279,
             "yreal": 389,
             "line": "b"
@@ -118,7 +118,7 @@
             "xmatrix": 15,
             "ymatrix": 14,
             "xreal": 590,
-            "yreal": 366,
+            "yreal": 302,
             "line": "b"
         },
         {
@@ -267,7 +267,7 @@
         },
         {
             "name": "Ceskamoravska",
-            "xmatrix": 18,
+            "xmatrix": 19,
             "ymatrix": 15,
             "xreal": 766,
             "yreal": 264,
@@ -283,8 +283,8 @@
         },
         {
             "name": "Kolbenova",
-            "xmatrix": 7,
-            "ymatrix": 1,
+            "xmatrix": 21,
+            "ymatrix": 15,
             "xreal": 846,
             "yreal": 236,
             "line": "b"
@@ -349,15 +349,15 @@
             "name": "Flora",
             "xmatrix": 10,
             "ymatrix": 17,
-            "xreal": 846,
-            "yreal": 236,
+            "xreal": 669,
+            "yreal": 444,
             "line": "b"
         },
         {
             "name": "Jiriho z podebrad",
             "xmatrix": 11,
             "ymatrix": 17,
-            "xreal": 669,
+            "xreal": 630,
             "yreal": 448,
             "line": "b"
         },
