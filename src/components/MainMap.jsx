@@ -135,15 +135,23 @@ class MainMap extends Component {
       return;
     }
     var matrix = [
-      [0, 0, 0, 0]
+      [0, 0, 0, 0, 0]
     ];
     
+    var matrixPrague = [
+      [0, 0, 0, 0, 0]
+    ];
+
     var grid = new PF.Grid(matrix);
     var finder = new PF.AStarFinder();
     //var path = finder.findPath(3, 0, 0, 0, grid);
     this.resultPath = finder.findPath(this.stationsDict[this.firstStation].xmatrix, this.stationsDict[this.firstStation].ymatrix, 
       this.stationsDict[this.secondStation].xmatrix, this.stationsDict[this.secondStation].ymatrix, grid);
     console.log('path=');
+    this.resultPath = this.resultPath.filter((elem)=>{
+      return typeof this.stationsDict[`x${elem[0]}y${elem[1]}`] !== "undefined";
+    });
+
     console.log(this.resultPath);
     this.props.onPathFound(this.resultPath.map((elem)=>{
       let station = this.stationsDict[`x${elem[0]}y${elem[1]}`];
