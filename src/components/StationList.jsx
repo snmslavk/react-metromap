@@ -6,15 +6,15 @@ class StationList extends Component {
         var renderTodos = () => {
             if (stations.length === 0) {
               return (
-                <p className="container__message">Nothing To Do</p>
+                <p className="container__message">there is no path</p>
               );
             }
             console.log('stations');
             console.log(stations);
-            return stations.map((todo) => {
-                console.log(todo);
+            return stations.map((elem) => {
+                console.log(elem);
                 return (
-                    <p >{todo}</p>
+                    <p >{elem}</p>
                 );
             });
         };

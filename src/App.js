@@ -5,37 +5,61 @@ import './App.css';
 import MainMap from './components/MainMap';
 import StationCombobox from './components/StationCombobox';
 import StationList from './components/StationList';
+import ctrl from './core/mainController';
 
 class App extends Component {
   
   constructor(props) {
     super(props);
-    this.stationPath = ['test','test2']
+    //this.stationPath = ['test','test2']
     this.state = {
       stationPath: [],
-      stationFrom: null,
-      stationTo: null,
+      stationFrom: undefined,
+      stationTo: undefined,
       stationList: []
     };
+
+    let stationListFromCtrl;
+    ctrl.getStations('/api/stations.json')
+    .then((html) => {
+      this.setState({stationList: JSON.parse(html).data});
+    })
+    .catch((err) => console.error(err));
+
+
   }
+
+  handlePathFound(resultPath) {
+    this.setState({stationPath: resultPath});
+  }
+
   handleSelectStationFrom(station) {
     this.setState({stationFrom: station});
   }
 
+  handleSelectStationTo(station) {
+    this.setState({stationTo: station});
+  }
+
   handleMapSelectStation(station1,station2) {
-    this.setState({stationPath: [station1, station2]});
+    this.setState({      
+      stationFrom: station1,
+      stationTo: station2
+    });
     //this.stationPath = [station1, station2];
   }
 
   render() {
-    var thisTestValue = 'fff';
-    var {stationPath, stationFrom} = this.state;
+    let thisTestValue = 'fff';
+    let {stationPath, stationFrom, stationList, stationTo} = this.state;
     return (
       <div className="App">
-        <StationCombobox onChangeSelection={this.handleSelectStationFrom.bind(this)} stationName={stationFrom}/>
-        <StationCombobox stationName={thisTestValue}/>
+        <StationCombobox onChangeSelection={this.handleSelectStationFrom.bind(this)} stationName={stationFrom} stationList={stationList}/>
+        <StationCombobox onChangeSelection={this.handleSelectStationTo.bind(this)} stationName={stationTo} stationList={stationList}/>
         <StationList stations={stationPath}/>
-        <MainMap onMapSelectStation={this.handleMapSelectStation.bind(this)} stationOne={stationFrom} stationTwo={thisTestValue} testProp={thisTestValue}/>
+        <MainMap onMapSelectStation={this.handleMapSelectStation.bind(this)} 
+          stationOne={stationFrom} stationTwo={stationTo} stationList={stationList}
+          onPathFound={this.handlePathFound.bind(this)}/>
       </div>
     );
   }
