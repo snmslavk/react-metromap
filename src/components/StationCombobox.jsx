@@ -30,7 +30,7 @@ class StationCombobox extends Component {
       };
       return (
         <div className="stationCombobox">
-          <select onChange={this.handleChange.bind(this)} value={stationName}>
+          <select className="form-control" onChange={this.handleChange.bind(this)} value={stationName}>
             <option value=''></option>
             {renderSelect()}
           </select>

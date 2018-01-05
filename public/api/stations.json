@@ -5,8 +5,8 @@
             "name": "Nemocnice Motol",
             "xmatrix": 13,
             "ymatrix": 7,
-            "xreal": 257,
-            "yreal": 453,
+            "xreal": 267,
+            "yreal": 463,
             "line": "b"
         },
         {
@@ -69,8 +69,8 @@
             "name": "Letnany",
             "xmatrix": 15,
             "ymatrix": 8,
-            "xreal": 837,
-            "yreal": 122,
+            "xreal": 847,
+            "yreal": 132,
             "line": "b"
         },
         {
@@ -125,8 +125,8 @@
             "name": "Zlicin",
             "xmatrix": 1,
             "ymatrix": 15,
-            "xreal": 90,
-            "yreal": 596,
+            "xreal": 100,
+            "yreal": 606,
             "line": "b"
         },
         {
@@ -309,16 +309,16 @@
             "name": "Cerny Most",
             "xmatrix": 24,
             "ymatrix": 15,
-            "xreal": 1040,
-            "yreal": 229,
+            "xreal": 1050,
+            "yreal": 239,
             "line": "b"
         },
         {
             "name": "Depo Hostivar",
             "xmatrix": 6,
             "ymatrix": 17,
-            "xreal": 834,
-            "yreal": 456,
+            "xreal": 844,
+            "yreal": 466,
             "line": "b"
         },
         {
@@ -461,8 +461,8 @@
             "name": "Haje",
             "xmatrix": 13,
             "ymatrix": 27,
-            "xreal": 873,
-            "yreal": 742,
+            "xreal": 883,
+            "yreal": 752,
             "line": "b"
         }
     ]

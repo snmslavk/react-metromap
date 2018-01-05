@@ -13,6 +13,7 @@ class MainMap extends Component {
     this.firstStation = '';
     this.secondStation = '';
     this.resultPath = null;
+    this.animationQueue = [];
   }
     
   initMap(component) {
@@ -34,6 +35,31 @@ class MainMap extends Component {
     this.drawPath();
     this.drawSelection();
 
+    // let path = new Path();
+    // // Give the stroke a color
+    // path.strokeColor = 'black';
+    // path.add(new Point(100, 100));
+    // path.add(new Point(100, 100));
+
+    // paper.view.onFrame = (event) => {
+    //   //for (var i = 0; i <= 2; i++) {
+    //   //  var segment = path.segments[0];
+    
+    //     // A cylic value between -1 and 1
+    //   //  var sinus = Math.sin(event.time * 3 + 0);
+        
+    //     // Change the y position of the segment point:
+    //   //  segment.point.y = sinus * 60 + 100;
+    //   //}
+    //   //console.log(event.time);
+    //   //if (event.count % 2 === 0) {
+    //     var segment = path.segments[0];
+    //     if (segment.point.y<500) {
+    //       segment.point.y+=1;
+    //     }
+    //     //console.log(event.time);
+    //   //}
+    // }
     paper.view.draw();
   }
 
@@ -138,40 +164,6 @@ class MainMap extends Component {
       [0, 0, 0, 0, 0]
     ];
     
-    // 10 shirina
-    // var matrixPrague = [
-    //   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    //   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    //   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    //   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    //   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    //   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    //   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    //   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, Nemocnice Motol(13,17), 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    //   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, Petriny(13,8), 0, Letnany, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    //   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, Nadrazi Veleslavin(13,9), 0, Prosek(15,9), 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    //   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, Borislavka(13,10), 0, Strizkov(15,10), 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    //   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, Dejvicka(13,11), 0, Ladvi(15,11), 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    //   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, Hradcanska(13,12), 1, Kobylisy(15,12), 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0],
-    //   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, Malostranska(13,13), 1, Nadrazi Holesovice(15,13), 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0],
-    //   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, Staromestka(13,14), 1, Vltavska(15,14), 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0],
-    //   [0, Zlicin(1,15), Stodulky(2,15), Luka(3,15), Luziny(4,15), Hurka(5,15), Nove butove(6,15), Jinonice(7,15), Radilicka(8,15), Smichovske nadrazi(9,15), Andel(10,15), Karlovo Namesti(11,15), Narodni trida(12,15), Mustek(13,15), Namesti republiku(14,15), Florenc(15,15), Krizikova(16,15), Invalidovna(17,15), Palmovka(18,15), Ceskamoravska(19,15), Vysochanska(20,15), Kolbenova(21,15), Hloubetin(22,15), Rajska zahrada(23,15), Cerny most(24,15), 0, 0, 0, 0],
-    //   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, X, 1, X, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0],
-    //   [0, 0, 0, 0, 0, 0, Depo Hostivar(6,17), Skalka(7,17), Strasnicka(8,17), Zelivskeho(9,17), Flora(10,17), Jiriho z podebrad(11,17), Namesti Miru(12,17), Muzeum(13,17), X(14,17), Hlavni Nadrazi(15,17), 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    //   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, IP Pavlova(13,18), 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    //   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, Vyshehrad(13,19), 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    //   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, Prazkeho povstani(13,20), 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    //   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, Pankrac(13,21), 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    //   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, Budejovicka(13,22), 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    //   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, Kacerov(13,23), 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    //   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, Roztyly(13,24), 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    //   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, Chodov(13,25), 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    //   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, Opatov(13,26), 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    //   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, Haje(13,27), 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    //   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    //   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-    // ];
-
     // var matrixPrague = [
     //   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
     //   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
@@ -247,7 +239,8 @@ class MainMap extends Component {
     console.log(this.resultPath);
     this.props.onPathFound(this.resultPath.map((elem)=>{
       let station = this.stationsDict[`x${elem[0]}y${elem[1]}`];
-      return station.name;
+      return {key:station.name,name:station.name, line:station.line};
+      //return station.name;
     }));
     // console.log('stop finding path');
   }
@@ -263,8 +256,8 @@ class MainMap extends Component {
         var station1 = this.stationsDict[`x${this.resultPath[i-1][0]}y${this.resultPath[i-1][1]}`];
         var station2 = this.stationsDict[`x${this.resultPath[i][0]}y${this.resultPath[i][1]}`];
         this.drawLine(station1.xreal,station1.yreal,station2.xreal,station2.yreal);
-        station1.circleLink.fillColor = 'green';
-        station2.circleLink.fillColor = 'green';
+        station1.circleLink.fillColor = 'blue';
+        station2.circleLink.fillColor = 'blue';
       };
     }
     //console.log('stop draw path');
@@ -275,7 +268,8 @@ class MainMap extends Component {
     var cc = new Path.Circle({
       center: new Point(x, y),
       radius: 11,
-      fillColor: 'black'
+      fillColor: '#ffffff',
+      opacity: 0.5
     });
     return cc;
   };
@@ -284,7 +278,9 @@ class MainMap extends Component {
     var from = new Point(x1, y1);
     var to = new Point(x2, y2);
     var line = new Path.Line(from, to);
-    line.strokeColor = 'black';
+    line.strokeColor = 'blue';
+    line.strokeWidth = 7;
+    return line;
   }
 
   render() {
@@ -302,13 +298,14 @@ class MainMap extends Component {
     return (
       <div className="mainMap">
         <img src="prague_metro.svg" id="mainImage" style={{display: 'none'}} ></img>
-        <div className="container-fluid">
-          <div className="row">
+        <canvas id="myCanvas" ref={ ref => { this.initMap(ref); } } resize="true"></canvas>
+        {/* <div className="container-fluid">
+          <div className="row ">
               <div className="col-sm-1"></div>
               <div className="col-sm-10"><canvas id="myCanvas" ref={ ref => { this.initMap(ref); } } resize="true"></canvas></div>
               <div className="col-sm-1"></div>
             </div>
-        </div>
+        </div> */}
       </div>
     );
   }

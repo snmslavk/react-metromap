@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
+import ctrl from '../core/mainController';
 
 class StationList extends Component {
     render() {
+        var lineConfig = ctrl.getLineConfig();
         var {stations} = this.props;
         var renderTodos = () => {
             if (stations.length === 0) {
               return (
-                <p className="container__message">there is no path</p>
+                <li className="list-group-item">there is no path</li>
               );
             }
             console.log('stations');
@@ -14,15 +16,18 @@ class StationList extends Component {
             return stations.map((elem) => {
                 console.log(elem);
                 return (
-                    <p >{elem}</p>
+                    <li className="list-group-item">
+                        <span style={{backgroundColor: lineConfig[elem.line].color}} className="badge">{lineConfig[elem.line].name}</span>
+                        {elem.name}
+                    </li>
                 );
             });
         };
           
         return (
-            <div>
+            <ul className="list-group">
                 {renderTodos()}
-            </div>
+            </ul>
         );
     }
 }

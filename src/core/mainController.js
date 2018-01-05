@@ -28,6 +28,14 @@ https.get('/api/stations.json', (resp) => {
         console.log('myyyy');
     }
 
+    static getLineConfig() {
+      return {
+        "a": { name: "A", color: "green"},
+        "b": { name: "B", color: "yellow"},
+        "c": { name: "C", color: "red"},
+      }
+    }
+
     static getStations(url) {
         // return new pending promise
         return new Promise((resolve, reject) => {

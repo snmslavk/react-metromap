@@ -54,12 +54,48 @@ class App extends Component {
     let {stationPath, stationFrom, stationList, stationTo} = this.state;
     return (
       <div className="App">
-        <StationCombobox onChangeSelection={this.handleSelectStationFrom.bind(this)} stationName={stationFrom} stationList={stationList}/>
-        <StationCombobox onChangeSelection={this.handleSelectStationTo.bind(this)} stationName={stationTo} stationList={stationList}/>
-        <StationList stations={stationPath}/>
-        <MainMap onMapSelectStation={this.handleMapSelectStation.bind(this)} 
-          stationOne={stationFrom} stationTwo={stationTo} stationList={stationList}
-          onPathFound={this.handlePathFound.bind(this)}/>
+        <div class="container-fluid">
+          <div class="row">
+            <nav class="navbar navbar-default"> 
+              <div class="container-fluid"> 
+                  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6"> 
+                    <ul class="nav navbar-nav"> <li class="active"><a href="#">Home</a></li> <li><a href="#">Prague metro</a></li> 
+                    </ul> 
+                  </div> 
+              </div> 
+            </nav>
+          </div>
+          <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+              <div class="row">
+                <div class="col-md-6">
+                  <StationCombobox onChangeSelection={this.handleSelectStationFrom.bind(this)} stationName={stationFrom} stationList={stationList}/>
+                </div>
+                <div class="col-md-6">
+                  <StationCombobox onChangeSelection={this.handleSelectStationTo.bind(this)} stationName={stationTo} stationList={stationList}/>
+                </div>
+              </div> 
+            </div>
+          </div>
+          <div class="row fill">
+            <div class="col-md-2">
+              <StationList stations={stationPath}/>
+            </div>
+            <div class="col-md-10">
+              <MainMap onMapSelectStation={this.handleMapSelectStation.bind(this)} 
+                stationOne={stationFrom} stationTwo={stationTo} stationList={stationList}
+                onPathFound={this.handlePathFound.bind(this)}/>
+            </div>
+          </div> 
+
+          <div class="row">
+          <nav class="navbar navbar-default navbar-fixed-bottom">
+            <div class="container">
+
+            </div>
+          </nav>
+          </div>           
+        </div>
       </div>
     );
   }
