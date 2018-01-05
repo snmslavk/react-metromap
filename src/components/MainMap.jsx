@@ -303,13 +303,6 @@ class MainMap extends Component {
       <div className="mainMap">
         <img src="prague_metro.svg" id="mainImage" style={{display: 'none'}} ></img>
         <canvas id="myCanvas" ref={ ref => { this.initMap(ref); } } resize="true"></canvas>
-        {/* <div className="container-fluid">
-          <div className="row ">
-              <div className="col-sm-1"></div>
-              <div className="col-sm-10"><canvas id="myCanvas" ref={ ref => { this.initMap(ref); } } resize="true"></canvas></div>
-              <div className="col-sm-1"></div>
-            </div>
-        </div> */}
       </div>
     );
   }

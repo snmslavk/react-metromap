@@ -90,7 +90,18 @@ class App extends Component {
 
           <div class="row">
             <div class="col-md-8 col-md-offset-2">
-              <p>SEO text Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              <p>Prague metro lines
+                The whole underground network is divided into the three main lines, each represented by its own color:
+
+                Line A (green)
+                Line B (yellow)
+                Line C (red)
+                Intervals
+
+                metro operates daily 5:00am – midnight
+                two to three minutes between trains during peak hours
+                four to nine minutes in off peak hours (after 7:00 pm).
+                There are 57 metro stations with 3 important transfer stations – Muzeum (red to green), Můstek (yellow to green) and Florenc (yellow to red). To get from one station to another takes about two minutes.</p>
             </div>
           </div>
 
