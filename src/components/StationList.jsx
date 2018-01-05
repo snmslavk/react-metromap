@@ -15,9 +15,20 @@ class StationList extends Component {
             console.log(stations);
             return stations.map((elem) => {
                 console.log(elem);
+                let badges = null;
+                if (Array.isArray(elem.line)) {
+                    badges = elem.line.map((element) => {
+                        console.log("MMMMM");
+                        console.log(element);
+                        return <span style={{backgroundColor: lineConfig[element].color}} className="badge">{lineConfig[element].name}</span>
+                    
+                    });
+                } else {
+                    badges=<span style={{backgroundColor: lineConfig[elem.line].color}} className="badge">{lineConfig[elem.line].name}</span>;
+                }
                 return (
                     <li className="list-group-item">
-                        <span style={{backgroundColor: lineConfig[elem.line].color}} className="badge">{lineConfig[elem.line].name}</span>
+                        {badges}
                         {elem.name}
                     </li>
                 );

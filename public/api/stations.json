@@ -223,7 +223,7 @@
             "ymatrix": 15,
             "xreal": 541,
             "yreal": 410,
-            "line": "b"
+            "line": ["b","a"]
         },
         {
             "name": "Namesti Republiky",
@@ -239,7 +239,7 @@
             "ymatrix": 15,
             "xreal": 589,
             "yreal": 366,
-            "line": "c"
+            "line": ["c","b"]
         },
         {
             "name": "Krizikova",
@@ -266,7 +266,7 @@
             "line": "b"
         },
         {
-            "name": "Ceskamoravska",
+            "name": "Ceskomoravska",
             "xmatrix": 19,
             "ymatrix": 15,
             "xreal": 766,
@@ -375,7 +375,7 @@
             "ymatrix": 17,
             "xreal": 566,
             "yreal": 433,
-            "line": "a"
+            "line": ["a","c"]
         },
         {
             "name": "Hlavni Nadrazi",

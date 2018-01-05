@@ -31,8 +31,8 @@ class MainMap extends Component {
     // }
     this.getStationInformation();
     this.findPath();
-    this.drawStations();
-    this.drawPath();
+    this.drawStations();    
+    this.drawPath();    
     this.drawSelection();
 
     // let path = new Path();
@@ -75,10 +75,12 @@ class MainMap extends Component {
     if (typeof this.stationsDict[this.firstStation] !== "undefined") {
       //console.log('selection1 draw');
       this.stationsDict[this.firstStation].circleLink.fillColor = 'red';
+      this.stationsDict[this.firstStation].circleLink.opacity = 1;
     }
     if (typeof this.stationsDict[this.secondStation] !== "undefined") {
       //console.log('selection2 draw');
       this.stationsDict[this.secondStation].circleLink.fillColor = 'red';
+      this.stationsDict[this.firstStation].circleLink.opacity = 1;
     }
   }
 
@@ -258,6 +260,8 @@ class MainMap extends Component {
         this.drawLine(station1.xreal,station1.yreal,station2.xreal,station2.yreal);
         station1.circleLink.fillColor = 'blue';
         station2.circleLink.fillColor = 'blue';
+        station2.circleLink.opacity = 1;
+        station1.circleLink.opacity = 1;
       };
     }
     //console.log('stop draw path');
@@ -269,7 +273,7 @@ class MainMap extends Component {
       center: new Point(x, y),
       radius: 11,
       fillColor: '#ffffff',
-      opacity: 0.5
+      opacity: 0
     });
     return cc;
   };

@@ -59,7 +59,7 @@ class App extends Component {
             <nav class="navbar navbar-default"> 
               <div class="container-fluid"> 
                   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6"> 
-                    <ul class="nav navbar-nav"> <li class="active"><a href="#">Home</a></li> <li><a href="#">Prague metro</a></li> 
+                    <ul class="nav navbar-nav"> <li><a href="#">Home</a></li> <li><a href="#">Prague metro</a></li> 
                     </ul> 
                   </div> 
               </div> 
@@ -86,7 +86,13 @@ class App extends Component {
                 stationOne={stationFrom} stationTwo={stationTo} stationList={stationList}
                 onPathFound={this.handlePathFound.bind(this)}/>
             </div>
-          </div> 
+          </div>
+
+          <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+              <p>SEO text Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+          </div>
 
           <div class="row">
           {/* <nav class="navbar navbar-default">
