@@ -89,11 +89,11 @@ class App extends Component {
           </div> 
 
           <div class="row">
-          <nav class="navbar navbar-default navbar-fixed-bottom">
+          {/* <nav class="navbar navbar-default">
             <div class="container">
 
             </div>
-          </nav>
+          </nav> */}
           </div>           
         </div>
       </div>

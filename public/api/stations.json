@@ -7,7 +7,7 @@
             "ymatrix": 7,
             "xreal": 267,
             "yreal": 463,
-            "line": "b"
+            "line": "a"
         },
         {
             "name": "Petriny",
@@ -15,7 +15,7 @@
             "ymatrix": 8,
             "xreal": 279,
             "yreal": 389,
-            "line": "b"
+            "line": "a"
         },
         {
             "name": "Nadrazi Veleslavin",
@@ -23,7 +23,7 @@
             "ymatrix": 9,
             "xreal": 285,
             "yreal": 333,
-            "line": "b"
+            "line": "a"
         },
         {
             "name": "Borislavka",
@@ -31,7 +31,7 @@
             "ymatrix": 10,
             "xreal": 334,
             "yreal": 314,
-            "line": "b"
+            "line": "a"
         },
         {
             "name": "Dejvicka",
@@ -39,7 +39,7 @@
             "ymatrix": 11,
             "xreal": 440,
             "yreal": 300,
-            "line": "b"
+            "line": "a"
         },
         {
             "name": "Hradcanska",
@@ -47,7 +47,7 @@
             "ymatrix": 12,
             "xreal": 473,
             "yreal": 320,
-            "line": "b"
+            "line": "a"
         },
         {
             "name": "Malostranska",
@@ -55,7 +55,7 @@
             "ymatrix": 13,
             "xreal": 492,
             "yreal": 357,
-            "line": "b"
+            "line": "a"
         },
         {
             "name": "Staromestka",
@@ -63,7 +63,7 @@
             "ymatrix": 14,
             "xreal": 520,
             "yreal": 379,
-            "line": "b"
+            "line": "a"
         },
         {
             "name": "Letnany",
@@ -71,7 +71,7 @@
             "ymatrix": 8,
             "xreal": 847,
             "yreal": 132,
-            "line": "b"
+            "line": "c"
         },
         {
             "name": "Prosek",
@@ -79,7 +79,7 @@
             "ymatrix": 9,
             "xreal": 790,
             "yreal": 180,
-            "line": "b"
+            "line": "c"
         },
         {
             "name": "Strizkov",
@@ -87,7 +87,7 @@
             "ymatrix": 10,
             "xreal": 756,
             "yreal": 130,
-            "line": "b"
+            "line": "c"
         },
         {
             "name": "Ladvi",
@@ -95,7 +95,7 @@
             "ymatrix": 11,
             "xreal": 693,
             "yreal": 130,
-            "line": "b"
+            "line": "c"
         },
         {
             "name": "Kobylisy",
@@ -103,7 +103,7 @@
             "ymatrix": 12,
             "xreal": 642,
             "yreal": 148,
-            "line": "b"
+            "line": "c"
         },
         {
             "name": "Nadrazi Holesovice",
@@ -111,7 +111,7 @@
             "ymatrix": 13,
             "xreal": 595,
             "yreal": 246,
-            "line": "b"
+            "line": "c"
         },
         {
             "name": "Vltavska",
@@ -119,7 +119,7 @@
             "ymatrix": 14,
             "xreal": 590,
             "yreal": 302,
-            "line": "b"
+            "line": "c"
         },
         {
             "name": "Zlicin",
@@ -239,7 +239,7 @@
             "ymatrix": 15,
             "xreal": 589,
             "yreal": 366,
-            "line": "b"
+            "line": "c"
         },
         {
             "name": "Krizikova",
@@ -319,7 +319,7 @@
             "ymatrix": 17,
             "xreal": 844,
             "yreal": 466,
-            "line": "b"
+            "line": "a"
         },
         {
             "name": "Skalka",
@@ -327,7 +327,7 @@
             "ymatrix": 17,
             "xreal": 821,
             "yreal": 508,
-            "line": "b"
+            "line": "a"
         },
         {
             "name": "Strasnicka",
@@ -335,7 +335,7 @@
             "ymatrix": 17,
             "xreal": 763,
             "yreal": 478,
-            "line": "b"
+            "line": "a"
         },
         {
             "name": "Zelivskeho",
@@ -343,7 +343,7 @@
             "ymatrix": 17,
             "xreal": 713,
             "yreal": 444,
-            "line": "b"
+            "line": "a"
         },
         {
             "name": "Flora",
@@ -351,7 +351,7 @@
             "ymatrix": 17,
             "xreal": 669,
             "yreal": 444,
-            "line": "b"
+            "line": "a"
         },
         {
             "name": "Jiriho z podebrad",
@@ -359,7 +359,7 @@
             "ymatrix": 17,
             "xreal": 630,
             "yreal": 448,
-            "line": "b"
+            "line": "a"
         },
         {
             "name": "Namesti Miru",
@@ -367,7 +367,7 @@
             "ymatrix": 17,
             "xreal": 594,
             "yreal": 463,
-            "line": "b"
+            "line": "a"
         },
         {
             "name": "Muzeum",
@@ -375,7 +375,7 @@
             "ymatrix": 17,
             "xreal": 566,
             "yreal": 433,
-            "line": "b"
+            "line": "a"
         },
         {
             "name": "Hlavni Nadrazi",
@@ -383,7 +383,7 @@
             "ymatrix": 17,
             "xreal": 575,
             "yreal": 410,
-            "line": "b"
+            "line": "c"
         },
         {
             "name": "I.P.Pavlova",
@@ -391,7 +391,7 @@
             "ymatrix": 18,
             "xreal": 563,
             "yreal": 469,
-            "line": "b"
+            "line": "c"
         },
         {
             "name": "Vysehrad",
@@ -399,7 +399,7 @@
             "ymatrix": 19,
             "xreal": 563,
             "yreal": 542,
-            "line": "b"
+            "line": "c"
         },
         {
             "name": "Prazskeho povstani",
@@ -407,7 +407,7 @@
             "ymatrix": 20,
             "xreal": 573,
             "yreal": 583,
-            "line": "b"
+            "line": "c"
         },
         {
             "name": "Pankrac",
@@ -415,7 +415,7 @@
             "ymatrix": 21,
             "xreal": 593,
             "yreal": 620,
-            "line": "b"
+            "line": "c"
         },
         {
             "name": "Budejovicka",
@@ -423,7 +423,7 @@
             "ymatrix": 22,
             "xreal": 624,
             "yreal": 663,
-            "line": "b"
+            "line": "c"
         },
         {
             "name": "Kacerov",
@@ -431,7 +431,7 @@
             "ymatrix": 23,
             "xreal": 643,
             "yreal": 680,
-            "line": "b"
+            "line": "c"
         },
         {
             "name": "Roztyly",
@@ -439,7 +439,7 @@
             "ymatrix": 24,
             "xreal": 717,
             "yreal": 706,
-            "line": "b"
+            "line": "c"
         },
         {
             "name": "Chodov",
@@ -447,7 +447,7 @@
             "ymatrix": 25,
             "xreal": 764,
             "yreal": 746,
-            "line": "b"
+            "line": "c"
         },
         {
             "name": "Opatov",
@@ -455,7 +455,7 @@
             "ymatrix": 26,
             "xreal": 824,
             "yreal": 770,
-            "line": "b"
+            "line": "c"
         },
         {
             "name": "Haje",
@@ -463,7 +463,7 @@
             "ymatrix": 27,
             "xreal": 883,
             "yreal": 752,
-            "line": "b"
+            "line": "c"
         }
     ]
 }
