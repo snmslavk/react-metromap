@@ -29,13 +29,10 @@ class StationCombobox extends Component {
         });
       };
       return (
-        <div className="stationCombobox">
           <select className="form-control" onChange={this.handleChange.bind(this)} value={stationName}>
             <option value=''></option>
             {renderSelect()}
           </select>
-          {/* <p>{stationName}</p> */}
-        </div>
       );
   }
 }

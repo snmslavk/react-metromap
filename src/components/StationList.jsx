@@ -11,23 +11,23 @@ class StationList extends Component {
                 <li className="list-group-item">there is no path</li>
               );
             }
-            console.log('stations');
-            console.log(stations);
+            //console.log('stations');
+            //console.log(stations);
             return stations.map((elem) => {
-                console.log(elem);
+                //console.log(elem);
                 let badges = null;
                 if (Array.isArray(elem.line)) {
                     badges = elem.line.map((element) => {
-                        console.log("MMMMM");
-                        console.log(element);
-                        return <span style={{backgroundColor: lineConfig[element].color}} className="badge">{lineConfig[element].name}</span>
+                        //console.log("MMMMM");
+                        //console.log(element);
+                        return <span key={element} style={{backgroundColor: lineConfig[element].color}} className="badge">{lineConfig[element].name}</span>
                     
                     });
                 } else {
                     badges=<span style={{backgroundColor: lineConfig[elem.line].color}} className="badge">{lineConfig[elem.line].name}</span>;
                 }
                 return (
-                    <li className="list-group-item">
+                    <li key={elem.key} className="list-group-item">
                         {badges}
                         {elem.name}
                     </li>

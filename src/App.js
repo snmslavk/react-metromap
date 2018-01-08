@@ -51,24 +51,22 @@ class App extends Component {
     let {stationPath, stationFrom, stationList, stationTo} = this.state;
     return (
       <div className="App">
+      
         <div className="container-fluid">
           <div className="row">
-            <nav className="navbar navbar-default"> 
-              <div className="container-fluid"> 
-                  <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-6"> 
-                    <ul className="nav navbar-nav"> <li><a href="#home">Home</a></li> <li><a href="#prague-metro">Prague metro</a></li> 
-                    </ul> 
-                  </div> 
-              </div> 
-            </nav>
+            <div className="col-md-8 col-md-offset-2">
+              <h4>Choose start and final points of your trip via Prague Metro!</h4>
+            </div>
           </div>
           <div className="row">
             <div className="col-md-8 col-md-offset-2">
               <div className="row">
                 <div className="col-md-6">
+                  <label htmlFor="cmbFrom">From</label>
                   <StationCombobox onChangeSelection={this.handleSelectStationFrom.bind(this)} stationName={stationFrom} stationList={stationList}/>
                 </div>
                 <div className="col-md-6">
+                  <label htmlFor="cmbTo">To</label>
                   <StationCombobox onChangeSelection={this.handleSelectStationTo.bind(this)} stationName={stationTo} stationList={stationList}/>
                 </div>
               </div> 
@@ -78,7 +76,7 @@ class App extends Component {
             <div className="col-md-2">
               <StationList stations={stationPath}/>
             </div>
-            <div className="col-md-10">
+            <div className="col-md-10 hidden-xs">
               <MainMap onMapSelectStation={this.handleMapSelectStation.bind(this)} 
                 stationOne={stationFrom} stationTwo={stationTo} stationList={stationList}
                 onPathFound={this.handlePathFound.bind(this)}/>
@@ -87,18 +85,7 @@ class App extends Component {
 
           <div className="row">
             <div className="col-md-8 col-md-offset-2">
-              <p>Prague metro lines
-                The whole underground network is divided into the three main lines, each represented by its own color:
-
-                Line A (green)
-                Line B (yellow)
-                Line C (red)
-                Intervals
-
-                metro operates daily 5:00am – midnight
-                two to three minutes between trains during peak hours
-                four to nine minutes in off peak hours (after 7:00 pm).
-                There are 57 metro stations with 3 important transfer stations – Muzeum (red to green), Můstek (yellow to green) and Florenc (yellow to red). To get from one station to another takes about two minutes.</p>
+              <p>This is interactive online metro(underground) map of Prague.It allows you to easily find the needed route between stations. Even though the scheme of the prague metro map is not too complex and contains only 3 main line, we hope that this website with prague metro map would be useful for you in the future. Please don’t forget that Prague metro openings hours: 5:00am - 12:00pm. The average time that it requires to reach one station from another is about 2 minutes. During working hours prague metro has 2-3 minutes interval between trains, but during weekends and public holidays it could be up to 10 minutes, because of that be carefull with prague online metro map and plan your trip in advance. Prague online metro map has 3 lines: Line A (color green), Line B (color yellow) and Line C (color red). If you want to switch between lines during your trip within prague metro you can use three key transfer station: Muzeum (red-green), Mustek(yellow-green), Florenc(yellow-red).</p>
             </div>
           </div>
 
