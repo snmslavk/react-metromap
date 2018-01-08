@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 import MainMap from './components/MainMap';
@@ -19,7 +18,6 @@ class App extends Component {
       stationList: []
     };
 
-    let stationListFromCtrl;
     ctrl.getStations('/api/stations.json')
     .then((html) => {
       this.setState({stationList: JSON.parse(html).data});
@@ -50,46 +48,45 @@ class App extends Component {
   }
 
   render() {
-    let thisTestValue = 'fff';
     let {stationPath, stationFrom, stationList, stationTo} = this.state;
     return (
       <div className="App">
-        <div class="container-fluid">
-          <div class="row">
-            <nav class="navbar navbar-default"> 
-              <div class="container-fluid"> 
-                  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6"> 
-                    <ul class="nav navbar-nav"> <li><a href="#">Home</a></li> <li><a href="#">Prague metro</a></li> 
+        <div className="container-fluid">
+          <div className="row">
+            <nav className="navbar navbar-default"> 
+              <div className="container-fluid"> 
+                  <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-6"> 
+                    <ul className="nav navbar-nav"> <li><a href="#home">Home</a></li> <li><a href="#prague-metro">Prague metro</a></li> 
                     </ul> 
                   </div> 
               </div> 
             </nav>
           </div>
-          <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-              <div class="row">
-                <div class="col-md-6">
+          <div className="row">
+            <div className="col-md-8 col-md-offset-2">
+              <div className="row">
+                <div className="col-md-6">
                   <StationCombobox onChangeSelection={this.handleSelectStationFrom.bind(this)} stationName={stationFrom} stationList={stationList}/>
                 </div>
-                <div class="col-md-6">
+                <div className="col-md-6">
                   <StationCombobox onChangeSelection={this.handleSelectStationTo.bind(this)} stationName={stationTo} stationList={stationList}/>
                 </div>
               </div> 
             </div>
           </div>
-          <div class="row fill">
-            <div class="col-md-2">
+          <div className="row fill">
+            <div className="col-md-2">
               <StationList stations={stationPath}/>
             </div>
-            <div class="col-md-10">
+            <div className="col-md-10">
               <MainMap onMapSelectStation={this.handleMapSelectStation.bind(this)} 
                 stationOne={stationFrom} stationTwo={stationTo} stationList={stationList}
                 onPathFound={this.handlePathFound.bind(this)}/>
             </div>
           </div>
 
-          <div class="row">
-            <div class="col-md-8 col-md-offset-2">
+          <div className="row">
+            <div className="col-md-8 col-md-offset-2">
               <p>Prague metro lines
                 The whole underground network is divided into the three main lines, each represented by its own color:
 
@@ -105,7 +102,7 @@ class App extends Component {
             </div>
           </div>
 
-          <div class="row">
+          <div className="row">
           {/* <nav class="navbar navbar-default">
             <div class="container">
 

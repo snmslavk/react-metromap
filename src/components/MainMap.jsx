@@ -4,8 +4,6 @@ import paper, {Point, Path, Raster} from 'paper';
 
 import PF from 'pathfinding';
 
-import ctrl from '../core/mainController';
-
 class MainMap extends Component {
   constructor(props) {
     super(props);
@@ -123,14 +121,13 @@ class MainMap extends Component {
   }
   
   fillDict(stationList) {
-    var self = this;
-    console.log('start filling dict');
+    //console.log('start filling dict');
     stationList.forEach(function(element) {
       var dictKey = `x${element.xmatrix}y${element.ymatrix}`;
       this.stationsDict[dictKey] = element;
   
     }, this);
-    console.log('stop filling dict');
+    //console.log('stop filling dict');
   }
 
   // clearSelection() {
@@ -162,41 +159,7 @@ class MainMap extends Component {
       // console.log('return');
       return;
     }
-    var matrix = [
-      [0, 0, 0, 0, 0]
-    ];
     
-    // var matrixPrague = [
-    //   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-    //   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-    //   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-    //   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-    //   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-    //   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-    //   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-    //   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, Nemocnice Motol(13,17), 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-    //   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, Petriny(13,8), 1, Letnany(15,8), 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-    //   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, Nadrazi Veleslavin(13,9), 1, Prosek(15,9), 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-    //   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, Borislavka(13,10), 1, Strizkov(15,10), 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-    //   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, Dejvicka(13,11), 1, Ladvi(15,11), 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-    //   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, Hradcanska(13,12), 1, Kobylisy(15,12), 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-    //   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, Malostranska(13,13), 1, Nadrazi Holesovice(15,13), 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-    //   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, Staromestka(13,14), 1, Vltavska(15,14), 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-    //   [0, Zlicin(1,15), Stodulky(2,15), Luka(3,15), Luziny(4,15), Hurka(5,15), Nove butove(6,15), Jinonice(7,15), Radilicka(8,15), Smichovske nadrazi(9,15), Andel(10,15), Karlovo Namesti(11,15), Narodni trida(12,15), Mustek(13,15), Namesti republiku(14,15), Florenc(15,15), Krizikova(16,15), Invalidovna(17,15), Palmovka(18,15), Ceskamoravska(19,15), Vysochanska(20,15), Kolbenova(21,15), Hloubetin(22,15), Rajska zahrada(23,15), Cerny most(24,15), 1, 1, 1, 1],
-    //   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, X(6,13), 1, X(8,16), 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-    //   [1, 1, 1, 1, 1, 1, Depo Hostivar(6,17), Skalka(7,17), Strasnicka(8,17), Zelivskeho(9,17), Flora(10,17), Jiriho z podebrad(11,17), Namesti Miru(12,17), Muzeum(13,17), X(14,17), Hlavni Nadrazi(15,17), 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-    //   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, IP Pavlova(13,18), 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-    //   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, Vyshehrad(13,19), 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-    //   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, Prazkeho povstani(13,20), 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-    //   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, Pankrac(13,21), 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-    //   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, Budejovicka(13,22), 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-    //   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, Kacerov(13,23), 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-    //   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, Roztyly(13,24), 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-    //   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, Chodov(13,25), 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-    //   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, Opatov(13,26), 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-    //   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, Haje(13,27), 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
-    // ];
-
     var matrixPrague = [
       [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
       [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
@@ -268,7 +231,6 @@ class MainMap extends Component {
   }
 
   drawCircle(x,y){
-    var self = this; 
     var cc = new Path.Circle({
       center: new Point(x, y),
       radius: 11,
@@ -288,8 +250,8 @@ class MainMap extends Component {
   }
 
   render() {
-    console.log(this.props);
-    console.log(this.stationsDict);
+    //console.log(this.props);
+    //console.log(this.stationsDict);
     let {stationOne,stationTwo} = this.props;
     var station1 = this.findCoordStationByName(stationOne);
     var station2 = this.findCoordStationByName(stationTwo);
@@ -301,7 +263,7 @@ class MainMap extends Component {
     
     return (
       <div className="mainMap">
-        <img src="prague_metro.svg" id="mainImage" style={{display: 'none'}} ></img>
+        <img alt="prague metro map" src="prague_metro.svg" id="mainImage" style={{display: 'none'}} ></img>
         <canvas id="myCanvas" ref={ ref => { this.initMap(ref); } } resize="true"></canvas>
       </div>
     );

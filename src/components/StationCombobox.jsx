@@ -24,7 +24,7 @@ class StationCombobox extends Component {
         return stationList.map((element) => {
             //console.log(element);
             return (
-              <option value={element.name}>{element.name}</option>
+              <option key={element.name} value={element.name}>{element.name}</option>
             );
         });
       };

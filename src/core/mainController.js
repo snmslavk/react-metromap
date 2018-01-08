@@ -1,33 +1,4 @@
 export default class mainController {
-    static Hello() {
-        console.log('hello');
-    
-const https = require('https');
- 
-https.get('/api/stations.json', (resp) => {
-  let data = '';
- 
-  // A chunk of data has been recieved.
-  resp.on('data', (chunk) => {
-    data += chunk;
-  });
- 
-  // The whole response has been received. Print out the result.
-  resp.on('end', () => {
-      let parsedData = JSON.parse(data);
-    //console.log(parsedData);
-    return parsedData;
-  });
- 
-}).on("error", (err) => {
-  console.log("Error: " + err.message);
-});
-    }
-
-    MyFunc() {
-        console.log('myyyy');
-    }
-
     static getLineConfig() {
       return {
         "a": { name: "A", color: "green"},
@@ -37,7 +8,7 @@ https.get('/api/stations.json', (resp) => {
     }
 
     static getStations(url) {
-        // return new pending promise
+
         return new Promise((resolve, reject) => {
           // select http or https module, depending on reqested url
           const lib = url.startsWith('https') ? require('https') : require('http');

@@ -202,7 +202,7 @@
             "line": "b"
         },
         {
-            "name": "Karlovo Namesti",
+            "name": "Karlovo namesti",
             "xmatrix": 11,
             "ymatrix": 15,
             "xreal": 519,
@@ -226,7 +226,7 @@
             "line": ["b","a"]
         },
         {
-            "name": "Namesti Republiky",
+            "name": "namesti Republiky",
             "xmatrix": 14,
             "ymatrix": 15,
             "xreal": 564,
@@ -362,7 +362,7 @@
             "line": "a"
         },
         {
-            "name": "Namesti Miru",
+            "name": "namesti Miru",
             "xmatrix": 12,
             "ymatrix": 17,
             "xreal": 594,
