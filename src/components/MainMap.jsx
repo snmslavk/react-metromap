@@ -72,12 +72,12 @@ class MainMap extends Component {
     //console.log(this.firstStation);
     if (typeof this.stationsDict[this.firstStation] !== "undefined") {
       //console.log('selection1 draw');
-      this.stationsDict[this.firstStation].circleLink.fillColor = 'red';
+      this.stationsDict[this.firstStation].circleLink.fillColor = '#84052f';
       this.stationsDict[this.firstStation].circleLink.opacity = 1;
     }
     if (typeof this.stationsDict[this.secondStation] !== "undefined") {
       //console.log('selection2 draw');
-      this.stationsDict[this.secondStation].circleLink.fillColor = 'red';
+      this.stationsDict[this.secondStation].circleLink.fillColor = '#84052f';
       this.stationsDict[this.firstStation].circleLink.opacity = 1;
     }
   }
@@ -221,8 +221,8 @@ class MainMap extends Component {
         var station1 = this.stationsDict[`x${this.resultPath[i-1][0]}y${this.resultPath[i-1][1]}`];
         var station2 = this.stationsDict[`x${this.resultPath[i][0]}y${this.resultPath[i][1]}`];
         this.drawLine(station1.xreal,station1.yreal,station2.xreal,station2.yreal);
-        station1.circleLink.fillColor = 'blue';
-        station2.circleLink.fillColor = 'blue';
+        station1.circleLink.fillColor = '#0c56ce';
+        station2.circleLink.fillColor = '#0c56ce';
         station2.circleLink.opacity = 1;
         station1.circleLink.opacity = 1;
       };
@@ -244,7 +244,7 @@ class MainMap extends Component {
     var from = new Point(x1, y1);
     var to = new Point(x2, y2);
     var line = new Path.Line(from, to);
-    line.strokeColor = 'blue';
+    line.strokeColor = '#0c56ce';
     line.strokeWidth = 7;
     return line;
   }

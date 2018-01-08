@@ -54,18 +54,15 @@ class App extends Component {
       
         <div className="container-fluid">
           <div className="row">
-            <div className="col-md-8 col-md-offset-2">
-              <h4>Choose start and final points of your trip via Prague Metro!</h4>
-            </div>
           </div>
           <div className="row">
             <div className="col-md-8 col-md-offset-2">
               <div className="row">
-                <div className="col-md-6">
+                <div className="col-md-5">
                   <label htmlFor="cmbFrom">From</label>
                   <StationCombobox onChangeSelection={this.handleSelectStationFrom.bind(this)} stationName={stationFrom} stationList={stationList}/>
                 </div>
-                <div className="col-md-6">
+                <div className="col-md-5">
                   <label htmlFor="cmbTo">To</label>
                   <StationCombobox onChangeSelection={this.handleSelectStationTo.bind(this)} stationName={stationTo} stationList={stationList}/>
                 </div>
