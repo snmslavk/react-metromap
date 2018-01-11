@@ -221,8 +221,8 @@ class MainMap extends Component {
         var station1 = this.stationsDict[`x${this.resultPath[i-1][0]}y${this.resultPath[i-1][1]}`];
         var station2 = this.stationsDict[`x${this.resultPath[i][0]}y${this.resultPath[i][1]}`];
         this.drawLine(station1.xreal,station1.yreal,station2.xreal,station2.yreal);
-        station1.circleLink.fillColor = '#0c56ce';
-        station2.circleLink.fillColor = '#0c56ce';
+        station1.circleLink.fillColor = '#84052f';
+        station2.circleLink.fillColor = '#84052f';
         station2.circleLink.opacity = 1;
         station1.circleLink.opacity = 1;
       };
@@ -244,7 +244,7 @@ class MainMap extends Component {
     var from = new Point(x1, y1);
     var to = new Point(x2, y2);
     var line = new Path.Line(from, to);
-    line.strokeColor = '#0c56ce';
+    line.strokeColor = '#84052f';
     line.strokeWidth = 7;
     return line;
   }

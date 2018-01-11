@@ -3,7 +3,7 @@ import ctrl from '../core/mainController';
 
 class StationList extends Component {
     render() {
-        var lineConfig = ctrl.getLineConfig();
+        var lineConfig = ctrl.getLineConfig('Prague');
         var {stations} = this.props;
         var renderTodos = () => {
             if (stations.length === 0) {
