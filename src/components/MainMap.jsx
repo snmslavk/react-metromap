@@ -12,14 +12,15 @@ class MainMap extends Component {
     this.secondStation = '';
     this.resultPath = null;
     this.animationQueue = [];
+    this.raster = null;
   }
     
   initMap(component) {
     paper.setup(component);
 
-    var raster = new Raster('mainImage');
+    this.raster = new Raster('mainImage');
 
-    raster.on('load', function() {
+    this.raster.on('load', function() {
       this.position = this.size.divide(2);
     });
     // if (this.props.stationList.length > 0) {
@@ -249,6 +250,14 @@ class MainMap extends Component {
     return line;
   }
 
+  handleZoomIn() {
+    this.raster.scale(1.5);
+  }
+
+  handleZoomOut() {
+    this.raster.scale(0.5);
+  }
+
   render() {
     //console.log(this.props);
     //console.log(this.stationsDict);
@@ -263,6 +272,8 @@ class MainMap extends Component {
     
     return (
       <div className="mainMap">
+        <button type="button" class="btn btn-md pull-right" onClick={this.handleZoomIn.bind(this)}><span class="glyphicon glyphicon-zoom-in"></span></button>
+        <button type="button" class="btn btn-md pull-right" onClick={this.handleZoomOut.bind(this)}><span class="glyphicon glyphicon-zoom-out"></span></button>
         <img alt="prague metro map" src="prague_metro.svg" id="mainImage" style={{display: 'none'}} ></img>
         <canvas id="myCanvas" ref={ ref => { this.initMap(ref); } } resize="true"></canvas>
       </div>
