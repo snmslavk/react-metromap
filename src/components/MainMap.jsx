@@ -13,15 +13,32 @@ class MainMap extends Component {
     this.resultPath = null;
     this.animationQueue = [];
     this.raster = null;
+    this.draggedX = 0;
+    this.draggedY = 0;
+    this.scale = 1;
+  }
+
+  componentDidMount() {
+    this.initMap(this.canvas);
   }
     
   initMap(component) {
     paper.setup(component);
-
+    let self = this;
     this.raster = new Raster('mainImage');
 
     this.raster.on('load', function() {
-      this.position = this.size.divide(2);
+      console.log("paper view");
+      console.log(paper.view.bounds.size);
+      this.scale(self.scale);
+      //if (self.draggedX === 0 && self.draggedY === 0) {
+        this.position = this.bounds.size.divide(2);//paper.view.bounds.size.divide(2);
+        //this.position.x.add(this.draggedX);
+        //this.position.y.add(this.draggedY);
+        this.position.y+=self.draggedY;
+        this.position.x+=self.draggedX;
+        console.log(this.bounds);
+      //}
     });
     // if (this.props.stationList.length > 0) {
     //   this.getInformationAndDraw();
@@ -59,6 +76,15 @@ class MainMap extends Component {
     //     //console.log(event.time);
     //   //}
     // }
+
+    paper.view.onMouseUp = (event) => {
+      self.raster.position = self.raster.position.add(event.delta);
+      console.log('delta');
+      console.log(event.delta);
+      this.draggedX+=event.delta.x;
+      this.draggedY+=event.delta.y;
+      this.initMap(this.canvas);
+    }
     paper.view.draw();
   }
 
@@ -85,7 +111,7 @@ class MainMap extends Component {
 
   drawStations() {
     var self = this;
-    //console.log('start drawing dict');
+    console.log('start drawing dict');
     for (let prop in this.stationsDict) {
       //console.log("obj." + prop + " = " + this.stationsDict[prop]);
       
@@ -118,7 +144,7 @@ class MainMap extends Component {
         self.props.onMapSelectStation(tempStation1,tempStation2);
       }
     }
-    // console.log('stop drawing dict');
+    console.log('stop drawing dict');
   }
   
   fillDict(stationList) {
@@ -232,9 +258,11 @@ class MainMap extends Component {
   }
 
   drawCircle(x,y){
+    let self = this;
     var cc = new Path.Circle({
-      center: new Point(x, y),
+      center: new Point(self.draggedX+x*self.scale, self.draggedY+y*self.scale),
       radius: 11,
+      //fillColor: 'black'
       fillColor: '#ffffff',
       opacity: 0
     });
@@ -242,6 +270,14 @@ class MainMap extends Component {
   };
   
   drawLine(x1,y1,x2,y2) {
+    x1*=this.scale;
+    x2*=this.scale;
+    y1*=this.scale;
+    y2*=this.scale;
+    x1+=this.draggedX;
+    x2+=this.draggedX;
+    y1+=this.draggedY;
+    y2+=this.draggedY;
     var from = new Point(x1, y1);
     var to = new Point(x2, y2);
     var line = new Path.Line(from, to);
@@ -251,11 +287,15 @@ class MainMap extends Component {
   }
 
   handleZoomIn() {
-    this.raster.scale(1.5);
+    //this.raster.scale(1.2);
+    this.scale*=1.2;
+    this.initMap(this.canvas);
   }
 
   handleZoomOut() {
-    this.raster.scale(0.5);
+    //this.raster.scale(0.8);
+    this.scale*=0.8;
+    this.initMap(this.canvas);
   }
 
   render() {
@@ -269,13 +309,14 @@ class MainMap extends Component {
     };
     this.firstStation = this.findCoordStationByName(stationOne);
     this.secondStation = this.findCoordStationByName(stationTwo);
-    
+    this.initMap(this.canvas);
     return (
       <div className="mainMap">
-        <button type="button" class="btn btn-md pull-right" onClick={this.handleZoomIn.bind(this)}><span class="glyphicon glyphicon-zoom-in"></span></button>
-        <button type="button" class="btn btn-md pull-right" onClick={this.handleZoomOut.bind(this)}><span class="glyphicon glyphicon-zoom-out"></span></button>
+        <button type="button" className="btn btn-md pull-right" onClick={this.handleZoomIn.bind(this)}><span className="glyphicon glyphicon-zoom-in"></span></button>
+        <button type="button" className="btn btn-md pull-right" onClick={this.handleZoomOut.bind(this)}><span className="glyphicon glyphicon-zoom-out"></span></button>
         <img alt="prague metro map" src="prague_metro.svg" id="mainImage" style={{display: 'none'}} ></img>
-        <canvas id="myCanvas" ref={ ref => { this.initMap(ref); } } resize="true"></canvas>
+        {/* <canvas id="myCanvas" ref={ ref => { this.initMap(ref); } } resize="true"></canvas> */}
+        <canvas id="myCanvas" ref={ ref => { this.canvas=ref; } } resize="true"></canvas>
       </div>
     );
   }

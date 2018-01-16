@@ -56,7 +56,7 @@ class App extends Component {
           <div className="row">
           </div>
           <div className="row">
-            <div className="col-md-10 col-md-offset-2">
+            <div className="col-md-10    col-md-offset-2">
               <div className="row">
                 <div className="col-md-6">
                   <label htmlFor="cmbFrom">From</label>
@@ -73,7 +73,8 @@ class App extends Component {
             <div className="col-md-2">
               <StationList stations={stationPath}/>
             </div>
-            <div className="col-md-10 hidden-xs">
+            <div className="col-md-10">
+               {/* hidden-xs */}
               <MainMap onMapSelectStation={this.handleMapSelectStation.bind(this)} 
                 stationOne={stationFrom} stationTwo={stationTo} stationList={stationList}
                 onPathFound={this.handlePathFound.bind(this)}/>
