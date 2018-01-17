@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import paper, {Point, Path, Raster} from 'paper';
+import paper, {Point, Path, Raster, Layer} from 'paper';
 
 import PF from 'pathfinding';
 
@@ -16,30 +16,64 @@ class MainMap extends Component {
     this.draggedX = 0;
     this.draggedY = 0;
     this.scale = 1;
+    this.secondLayer = null;
+    this.resetScaleProc = false;
   }
 
   componentDidMount() {
-    this.initMap(this.canvas);
+    paper.setup(this.canvas);
+    this.raster = new Raster('mainImage');
+    let self = this;
+    this.raster.on('load', function() {
+      if (paper.view.bounds.size.width < 450) {
+        self.draggedY+=-self.raster.bounds.size.height/3;
+        self.draggedX+=-self.raster.bounds.size.width/3;
+      }
+      else if (paper.view.bounds.size.width < 800) {
+        self.draggedY+=-paper.view.bounds.size.width/3;
+        self.draggedX+=-paper.view.bounds.size.width/3;
+      }
+
+      self.secondLayer = new Layer();
+      self.initMap(self.canvas);
+    });
   }
     
   initMap(component) {
-    paper.setup(component);
+    //paper.setup(component);
+    // console.log('scale');
+    // console.log(this.scale)
     let self = this;
-    this.raster = new Raster('mainImage');
+    //this.raster = new Raster('mainImage');
+    //paper.project.activeLayer.removeChildren();
+    this.secondLayer.removeChildren();
+    //this.secondLayer = new Layer();
+    // this.raster.on('load', function() {
+    //  console.log("paper view");
+    //  console.log(paper.view.bounds.size);
+    //   this.scale(self.scale);
+    //   //if (self.draggedX === 0 && self.draggedY === 0) {
+    //     this.position = this.bounds.size.divide(2);//paper.view.bounds.size.divide(2);
+    //     //this.position.x.add(this.draggedX);
+    //     //this.position.y.add(this.draggedY);
+    //     this.position.y+=self.draggedY;
+    //     this.position.x+=self.draggedX;
+    //     console.log(this.bounds);
+    //   //}
+    // });
+    //this.raster.reset();
+    if (this.resetScaleProc === true) {
+      this.raster.scale(this.scale);
+      this.resetScaleProc = false;
+    }
 
-    this.raster.on('load', function() {
-      console.log("paper view");
-      console.log(paper.view.bounds.size);
-      this.scale(self.scale);
-      //if (self.draggedX === 0 && self.draggedY === 0) {
-        this.position = this.bounds.size.divide(2);//paper.view.bounds.size.divide(2);
-        //this.position.x.add(this.draggedX);
-        //this.position.y.add(this.draggedY);
-        this.position.y+=self.draggedY;
-        this.position.x+=self.draggedX;
-        console.log(this.bounds);
-      //}
-    });
+    this.raster.position = this.raster.bounds.size.divide(2);//paper.view.bounds.size.divide(2);
+
+    this.raster.position.y+=self.draggedY;
+    this.raster.position.x+=self.draggedX;
+
+    // this.raster.position.y+=-this.raster.bounds.size.height/3;
+    // this.raster.position.x+=-this.raster.bounds.size.width/3;
     // if (this.props.stationList.length > 0) {
     //   this.getInformationAndDraw();
     //   console.log('draw first');
@@ -79,8 +113,8 @@ class MainMap extends Component {
 
     paper.view.onMouseUp = (event) => {
       self.raster.position = self.raster.position.add(event.delta);
-      console.log('delta');
-      console.log(event.delta);
+      //console.log('delta');
+      //console.log(event.delta);
       this.draggedX+=event.delta.x;
       this.draggedY+=event.delta.y;
       this.initMap(this.canvas);
@@ -111,7 +145,7 @@ class MainMap extends Component {
 
   drawStations() {
     var self = this;
-    console.log('start drawing dict');
+    // console.log('start drawing dict');
     for (let prop in this.stationsDict) {
       //console.log("obj." + prop + " = " + this.stationsDict[prop]);
       
@@ -144,7 +178,7 @@ class MainMap extends Component {
         self.props.onMapSelectStation(tempStation1,tempStation2);
       }
     }
-    console.log('stop drawing dict');
+    // console.log('stop drawing dict');
   }
   
   fillDict(stationList) {
@@ -288,14 +322,21 @@ class MainMap extends Component {
 
   handleZoomIn() {
     //this.raster.scale(1.2);
+    this.resetRasterScale();
     this.scale*=1.2;
     this.initMap(this.canvas);
   }
 
   handleZoomOut() {
     //this.raster.scale(0.8);
+    this.resetRasterScale();
     this.scale*=0.8;
     this.initMap(this.canvas);
+  }
+
+  resetRasterScale() {
+    this.raster.scale(1/this.scale);
+    this.resetScaleProc = true;
   }
 
   render() {
@@ -309,9 +350,9 @@ class MainMap extends Component {
     };
     this.firstStation = this.findCoordStationByName(stationOne);
     this.secondStation = this.findCoordStationByName(stationTwo);
-    this.initMap(this.canvas);
+    //this.initMap(this.canvas);
     return (
-      <div className="mainMap">
+      <div className="mainMap div">
         <button type="button" className="btn btn-md pull-right" onClick={this.handleZoomIn.bind(this)}><span className="glyphicon glyphicon-zoom-in"></span></button>
         <button type="button" className="btn btn-md pull-right" onClick={this.handleZoomOut.bind(this)}><span className="glyphicon glyphicon-zoom-out"></span></button>
         <img alt="prague metro map" src="prague_metro.svg" id="mainImage" style={{display: 'none'}} ></img>

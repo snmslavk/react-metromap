@@ -73,7 +73,7 @@ class App extends Component {
             <div className="col-md-2">
               <StationList stations={stationPath}/>
             </div>
-            <div className="col-md-10">
+            <div className="col-md-10 fill">
                {/* hidden-xs */}
               <MainMap onMapSelectStation={this.handleMapSelectStation.bind(this)} 
                 stationOne={stationFrom} stationTwo={stationTo} stationList={stationList}
