@@ -3,12 +3,12 @@ import ctrl from '../core/mainController';
 
 class StationList extends Component {
     render() {
-        var lineConfig = ctrl.getLineConfig('Prague');
-        var {stations} = this.props;
+        var {stations,city} = this.props;
+        var lineConfig = ctrl.getLineConfig(city);
         var renderTodos = () => {
             if (stations.length === 0) {
               return (
-                <li className="list-group-item">there is no path</li>
+                <li className="list-group-item">Choose "From" and "To" stations</li>
               );
             }
             //console.log('stations');

@@ -25,15 +25,20 @@ const NoMatch = ({ location }) => (
     <h3>This is 404 Page. No match for <code>{location.pathname}</code></h3>
   </div>
 )
+// const pragueCity = "Prague";
+// const Prague = ({ location }) => (
+//   <App city={pragueCity} />
+// )
 
 
 ReactDOM.render(
     <Router>
     <div>
       <Switch>
-        <Route exact path="/" component={App}/>
+        <Route exact path="/" render={(props) => <App city="Prague" {...props}/>}/>
         <Route path="/about" component={About}/>
-        <Route path="/prague" component={App}/>
+        <Route path="/prague" render={(props) => <App city="Prague" {...props}/>}/>
+        <Route path="/lisbon" render={(props) => <App city="Lisbon" {...props}/>}/>
         <Route component={NoMatch}/>
       </Switch>
     </div>
