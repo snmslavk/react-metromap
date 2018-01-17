@@ -21,6 +21,7 @@ class MainMap extends Component {
   }
 
   componentDidMount() {
+    //console.log('mount!');
     paper.setup(this.canvas);
     this.raster = new Raster('mainImage');
     let self = this;
@@ -37,6 +38,14 @@ class MainMap extends Component {
       self.secondLayer = new Layer();
       self.initMap(self.canvas);
     });
+  }
+
+  drawEverything() {
+    this.getStationInformation();
+    this.findPath();
+    this.drawStations();    
+    this.drawPath();    
+    this.drawSelection();
   }
     
   initMap(component) {
@@ -79,11 +88,8 @@ class MainMap extends Component {
     //   console.log('draw first');
     //   // this.drawCircle(100,100);
     // }
-    this.getStationInformation();
-    this.findPath();
-    this.drawStations();    
-    this.drawPath();    
-    this.drawSelection();
+
+    this.drawEverything();
 
     // let path = new Path();
     // // Give the stroke a color
@@ -339,7 +345,8 @@ class MainMap extends Component {
     this.resetScaleProc = true;
   }
 
-  render() {
+  componentDidUpdate() {
+    //console.log("will update");
     //console.log(this.props);
     //console.log(this.stationsDict);
     let {stationOne,stationTwo} = this.props;
@@ -351,6 +358,13 @@ class MainMap extends Component {
     this.firstStation = this.findCoordStationByName(stationOne);
     this.secondStation = this.findCoordStationByName(stationTwo);
     //this.initMap(this.canvas);
+    this.findPath();
+    this.drawPath();    
+    this.drawSelection();
+  }
+
+  render() {
+    //console.log("render");
     return (
       <div className="mainMap div">
         <button type="button" className="btn btn-md pull-right" onClick={this.handleZoomIn.bind(this)}><span className="glyphicon glyphicon-zoom-in"></span></button>
