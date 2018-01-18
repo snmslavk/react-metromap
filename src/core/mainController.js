@@ -63,7 +63,7 @@ export default class mainController {
         return new Promise((resolve, reject) => {
           // select http or https module, depending on reqested url
           const lib = url.startsWith('https') ? require('https') : require('http');
-          const request = lib.get(url, (response) => {
+          const request = lib.get(url.toLowerCase(), (response) => {
             // handle http errors
             if (response.statusCode < 200 || response.statusCode > 299) {
                reject(new Error('Failed to load page, status code: ' + response.statusCode));

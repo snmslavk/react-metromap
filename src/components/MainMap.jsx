@@ -310,9 +310,9 @@ class MainMap extends Component {
     var cc = new Path.Circle({
       center: new Point(self.draggedX+x*self.scale, self.draggedY+y*self.scale),
       radius: 11,
-      fillColor: 'black'
-      // fillColor: '#ffffff',
-      // opacity: 0
+      //fillColor: 'black'
+      fillColor: '#ffffff',
+      opacity: 0
     });
     return cc;
   };
@@ -366,9 +366,13 @@ class MainMap extends Component {
     this.firstStation = this.findCoordStationByName(stationOne);
     this.secondStation = this.findCoordStationByName(stationTwo);
     //this.initMap(this.canvas);
-    this.findPath();
-    this.drawPath();    
-    this.drawSelection();
+    if (this.secondLayer!=null) {
+      this.secondLayer.removeChildren();
+      this.drawEverything();
+    }
+    // this.findPath();
+    // this.drawPath();    
+    // this.drawSelection();
   }
 
   render() {
@@ -380,7 +384,7 @@ class MainMap extends Component {
         <button type="button" className="btn btn-md pull-right" onClick={this.handleZoomIn.bind(this)}><span className="glyphicon glyphicon-zoom-in"></span></button>
         <button type="button" className="btn btn-md pull-right" onClick={this.handleZoomOut.bind(this)}><span className="glyphicon glyphicon-zoom-out"></span></button>
         <h5 className="pull-right">You can drag and zoom the metro map.</h5>
-        <img alt="prague metro map" src={city+"_metro.svg"} id="mainImage" style={{display: 'none'}} ></img>
+        <img alt="metro map" src={city.toLowerCase()+"_metro.svg"} id="mainImage" style={{display: 'none'}} ></img>
         {/* <canvas id="myCanvas" ref={ ref => { this.initMap(ref); } } resize="true"></canvas> */}
         <canvas id="myCanvas" ref={ ref => { this.canvas=ref; } } resize="true"></canvas>
       </div>

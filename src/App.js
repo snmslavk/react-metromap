@@ -51,9 +51,9 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.props);
+    //console.log(this.props);
     let {stationPath, stationFrom, stationList, stationTo, city} = this.state;
-    console.log(`city=${city}`);
+    //console.log(`city=${city}`);
     return (
       <div className="App">
       
