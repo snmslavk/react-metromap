@@ -24,12 +24,12 @@ class StationList extends Component {
                     
                     });
                 } else {
-                    badges=<span style={{backgroundColor: lineConfig[elem.line].color}} className="badge">{lineConfig[elem.line].name}</span>;
+                    badges=<span style={{backgroundColor: lineConfig[elem.line].color, color: 'white'}} className="badge">{lineConfig[elem.line].name}</span>;
                 }
                 return (
                     <li key={elem.key} className="list-group-item">
-                        {badges}
                         {elem.name}
+                        {badges}
                     </li>
                 );
             });

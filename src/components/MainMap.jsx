@@ -381,8 +381,8 @@ class MainMap extends Component {
     return (
       <div className="mainMap div">
         
-        <button type="button" className="btn btn-md pull-right" onClick={this.handleZoomIn.bind(this)}><span className="glyphicon glyphicon-zoom-in"></span></button>
-        <button type="button" className="btn btn-md pull-right" onClick={this.handleZoomOut.bind(this)}><span className="glyphicon glyphicon-zoom-out"></span></button>
+        <button type="button" className="btn btn-dark btn-md pull-right" onClick={this.handleZoomIn.bind(this)}>+</button>
+        <button type="button" className="btn btn-dark btn-md pull-right" onClick={this.handleZoomOut.bind(this)}>-</button>
         <h5 className="pull-right">You can drag and zoom the metro map.</h5>
         <img alt="metro map" src={city.toLowerCase()+"_metro.svg"} id="mainImage" style={{display: 'none'}} ></img>
         {/* <canvas id="myCanvas" ref={ ref => { this.initMap(ref); } } resize="true"></canvas> */}
