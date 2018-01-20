@@ -8,7 +8,7 @@ class StationList extends Component {
         var renderTodos = () => {
             if (stations.length === 0) {
               return (
-                <li className="list-group-item">Choose "From" and "To" stations</li>
+                <li className="list-group-item d-flex justify-content-between align-items-center"></li>
               );
             }
             //console.log('stations');
@@ -20,23 +20,23 @@ class StationList extends Component {
                     badges = elem.line.map((element) => {
                         //console.log("MMMMM");
                         //console.log(element);
-                        return <span key={element} style={{backgroundColor: lineConfig[element].color}} className="badge">{lineConfig[element].name}</span>
+                        return <span key={element} style={{backgroundColor: lineConfig[element].color}} className="badge badge-pill">{lineConfig[element].name}</span>
                     
                     });
                 } else {
-                    badges=<span style={{backgroundColor: lineConfig[elem.line].color, color: 'white'}} className="badge">{lineConfig[elem.line].name}</span>;
+                    badges=<span style={{backgroundColor: lineConfig[elem.line].color}} className="badge badge-pill">{lineConfig[elem.line].name}</span>;
                 }
                 return (
-                    <li key={elem.key} className="list-group-item">
+                    <li key={elem.key} className="list-group-item d-flex justify-content-between align-items-center">
                         {elem.name}
-                        {badges}
+                        <span>{badges}</span>
                     </li>
                 );
             });
         };
           
         return (
-            <ul className="list-group">
+            <ul className="list-group list-group-flush">
                 {renderTodos()}
             </ul>
         );

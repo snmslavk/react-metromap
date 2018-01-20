@@ -16,7 +16,23 @@
     <meta name="theme-color" content="#000000">
 
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
-    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
+    <meta name="msapplication-TileColor" content="#FFFFFF">
+    <meta name="msapplication-TileImage" content="%PUBLIC_URL%/icons/ms-icon-144x144.png">
+    <meta name="theme-color" content="#FFFFFF">
+
+    <link rel="apple-touch-icon" sizes="57x57" href="%PUBLIC_URL%/icons/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="%PUBLIC_URL%/icons/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="%PUBLIC_URL%/icons/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="%PUBLIC_URL%/icons/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="%PUBLIC_URL%/icons/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="%PUBLIC_URL%/icons/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="%PUBLIC_URL%/icons/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="%PUBLIC_URL%/icons/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="%PUBLIC_URL%/icons/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="%PUBLIC_URL%/icons/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="%PUBLIC_URL%/icons/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="%PUBLIC_URL%/icons/favicon-16x16.png">
 
     <title>Online interactive metro map</title>
     <meta name="description" content="Find your route using map or list with stations on your mobile,desktop and tablet device! Interactive online metro/subway/underground map allows you to create your own route and find an optimal path within Metro. Enjoy!" />
@@ -44,56 +60,64 @@
         <!-- End Single Page Apps for GitHub Pages -->
   </head>
   <body>
-    <div id="fb-root"></div>
     <noscript>
       You need to enable JavaScript to run this app.
     </noscript>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="/">Navbar</a>
+      <a class="navbar-brand" href="/">Online metro map</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
     
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          <li class="nav-item">
+            <a class="nav-link" href="/about">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
+            <a class="nav-link" href="/faq">FAQ</a>
+          </li>          
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Dropdown
+              Cities
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Something else here</a>
+              <a class="dropdown-item" href="/prague">Prague</a>
             </div>
           </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
-          </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
       </div>
     </nav>
+
     <div id="root"></div>
-    <div class="product-social-links text-center">
-      <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-text="Hi! I&#39;m using online metro map" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-      <div class="fb-share-button" data-href="https://mymetromap.com" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmymetromap.com%2F&amp;src=sdkpreparse">Share</a></div>
-    </div>
-    <script>(function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = 'https://connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v2.11';
-        fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));</script>
+    <footer class="container py-5">
+      <div class="row">
+        <div class="col-12 col-md">
+          <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="d-block mb-2"><circle cx="12" cy="12" r="10"></circle><line x1="14.31" y1="8" x2="20.05" y2="17.94"></line><line x1="9.69" y1="8" x2="21.17" y2="8"></line><line x1="7.38" y1="12" x2="13.12" y2="2.06"></line><line x1="9.69" y1="16" x2="3.95" y2="6.06"></line><line x1="14.31" y1="16" x2="2.83" y2="16"></line><line x1="16.62" y1="12" x2="10.88" y2="21.94"></line></svg> -->
+          <small class="d-block mb-3 text-muted">© 2018</small>
+        </div>
+        <div class="col-6 col-md">
+          <h5>Usefull links</h5>
+          <ul class="list-unstyled text-small">
+            <li><a class="text-muted" href="/prague">Prague Metro Map</a></li>
+            <li><a class="text-muted" href="/about">About</a></li>
+            <li><a class="text-muted" href="/prague">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md">
+          <h5>Download this app to your phone</h5>
+          <ul class="list-unstyled text-small">
+            <li><a class="text-muted" href="#">What is it?</a></li>
+            <li><a class="text-muted" href="#">Progressive web app</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md">
+
+        </div>
+        <div class="col-6 col-md">
+
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

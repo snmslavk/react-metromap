@@ -379,11 +379,11 @@ class MainMap extends Component {
     //console.log("render");
     let {city} = this.props;
     return (
-      <div className="mainMap div">
+      <div className="mainMap border">
         
-        <button type="button" className="btn btn-dark btn-md pull-right" onClick={this.handleZoomIn.bind(this)}>+</button>
-        <button type="button" className="btn btn-dark btn-md pull-right" onClick={this.handleZoomOut.bind(this)}>-</button>
-        <h5 className="pull-right">You can drag and zoom the metro map.</h5>
+        <button type="button" className="btn btn-dark btn-md float-right" onClick={this.handleZoomIn.bind(this)}>+</button>
+        <button type="button" className="btn btn-dark  btn-md float-right" onClick={this.handleZoomOut.bind(this)}>-</button>
+        <div className="float-right">You can drag and zoom the metro map.</div>
         <img alt="metro map" src={city.toLowerCase()+"_metro.svg"} id="mainImage" style={{display: 'none'}} ></img>
         {/* <canvas id="myCanvas" ref={ ref => { this.initMap(ref); } } resize="true"></canvas> */}
         <canvas id="myCanvas" ref={ ref => { this.canvas=ref; } } resize="true"></canvas>
