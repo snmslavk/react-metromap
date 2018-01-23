@@ -8,18 +8,23 @@ class StationList extends Component {
         var renderTodos = () => {
             if (stations.length === 0) {
               return (
-                <li className="list-group-item d-flex justify-content-between align-items-center"></li>
+                <li className="list-group-item">
+                    <ul class="list-group">
+                        <li class="list-group-item list-group-item-light">Choose a map:</li>
+                        <li class="list-group-item list-group-item-dark">Czech Republic</li>
+                        <li class="list-group-item list-group-item-light"><a class="text-muted" href="/prague">Prague</a></li>
+                        <li class="list-group-item list-group-item-dark">France</li>
+                        <li class="list-group-item list-group-item-light"><a class="text-muted" href="/">Paris</a></li>
+                        <li class="list-group-item list-group-item-dark">Portugal</li>
+                        <li class="list-group-item list-group-item-light"><a class="text-muted" href="/">Lisbon</a></li>
+                    </ul>
+                </li>
               );
             }
-            //console.log('stations');
-            //console.log(stations);
             return stations.map((elem) => {
-                //console.log(elem);
                 let badges = null;
                 if (Array.isArray(elem.line)) {
                     badges = elem.line.map((element) => {
-                        //console.log("MMMMM");
-                        //console.log(element);
                         return <span key={element} style={{backgroundColor: lineConfig[element].color}} className="badge badge-pill">{lineConfig[element].name}</span>
                     
                     });

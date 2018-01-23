@@ -10,16 +10,15 @@
 
       gtag('config', 'UA-9238267-6');
     </script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="theme-color" content="#000000">
 
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
     <meta name="msapplication-TileColor" content="#FFFFFF">
     <meta name="msapplication-TileImage" content="%PUBLIC_URL%/icons/ms-icon-144x144.png">
     <meta name="theme-color" content="#FFFFFF">
-
     <link rel="apple-touch-icon" sizes="57x57" href="%PUBLIC_URL%/icons/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="%PUBLIC_URL%/icons/apple-icon-60x60.png">
     <link rel="apple-touch-icon" sizes="72x72" href="%PUBLIC_URL%/icons/apple-icon-72x72.png">
@@ -38,86 +37,36 @@
     <meta name="description" content="Find your route using map or list with stations on your mobile,desktop and tablet device! Interactive online metro/subway/underground map allows you to create your own route and find an optimal path within Metro. Enjoy!" />
     <meta name="keywords" content="prague, metro map, metro scheme, prague metro map, prague online map, subway, underground" />
 
-        <!-- Start Single Page Apps for GitHub Pages -->
-        <script type="text/javascript">
-          (function(l) {
-            if (l.search) {
-              var q = {};
-              l.search.slice(1).split('&').forEach(function(v) {
-                var a = v.split('=');
-                q[a[0]] = a.slice(1).join('=').replace(/~and~/g, '&');
-              });
-              if (q.p !== undefined) {
-                window.history.replaceState(null, null,
-                  l.pathname.slice(0, -1) + (q.p || '') +
-                  (q.q ? ('?' + q.q) : '') +
-                  l.hash
-                );
-              }
-            }
-          }(window.location))
-        </script>
-        <!-- End Single Page Apps for GitHub Pages -->
+    <!-- Start Single Page Apps for GitHub Pages -->
+    <script type="text/javascript">
+      (function(l) {
+        if (l.search) {
+          var q = {};
+          l.search.slice(1).split('&').forEach(function(v) {
+            var a = v.split('=');
+            q[a[0]] = a.slice(1).join('=').replace(/~and~/g, '&');
+          });
+          if (q.p !== undefined) {
+            window.history.replaceState(null, null,
+              l.pathname.slice(0, -1) + (q.p || '') +
+              (q.q ? ('?' + q.q) : '') +
+              l.hash
+            );
+          }
+        }
+      }(window.location))
+    </script>
+    <!-- End Single Page Apps for GitHub Pages -->
   </head>
   <body>
     <noscript>
       You need to enable JavaScript to run this app.
     </noscript>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="/">Online metro map</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-    
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="/about">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/faq">FAQ</a>
-          </li>          
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Cities
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="/prague">Prague</a>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </nav>
+    <div id="header"></div>
 
     <div id="root"></div>
-    <footer class="container py-5">
-      <div class="row">
-        <div class="col-12 col-md">
-          <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="d-block mb-2"><circle cx="12" cy="12" r="10"></circle><line x1="14.31" y1="8" x2="20.05" y2="17.94"></line><line x1="9.69" y1="8" x2="21.17" y2="8"></line><line x1="7.38" y1="12" x2="13.12" y2="2.06"></line><line x1="9.69" y1="16" x2="3.95" y2="6.06"></line><line x1="14.31" y1="16" x2="2.83" y2="16"></line><line x1="16.62" y1="12" x2="10.88" y2="21.94"></line></svg> -->
-          <small class="d-block mb-3 text-muted">© 2018</small>
-        </div>
-        <div class="col-6 col-md">
-          <h5>Usefull links</h5>
-          <ul class="list-unstyled text-small">
-            <li><a class="text-muted" href="/prague">Prague Metro Map</a></li>
-            <li><a class="text-muted" href="/about">About</a></li>
-            <li><a class="text-muted" href="/prague">FAQ</a></li>
-          </ul>
-        </div>
-        <div class="col-6 col-md">
-          <h5>Download this app to your phone</h5>
-          <ul class="list-unstyled text-small">
-            <li><a class="text-muted" href="#">What is it?</a></li>
-            <li><a class="text-muted" href="#">Progressive web app</a></li>
-          </ul>
-        </div>
-        <div class="col-6 col-md">
 
-        </div>
-        <div class="col-6 col-md">
-
-        </div>
-      </div>
-    </footer>
+    <div id="footer"></div>
+    
   </body>
 </html>

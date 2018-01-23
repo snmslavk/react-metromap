@@ -5,6 +5,8 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
+import Footer from './components/Footer';
+import HeaderNavigation from './components/HeaderNavigation';
 
 import {
     BrowserRouter as Router,
@@ -27,11 +29,6 @@ const NoMatch = ({ location }) => (
     <h3>This is 404 Page. No match for <code>{location.pathname}</code></h3>
   </div>
 )
-// const pragueCity = "Prague";
-// const Prague = ({ location }) => (
-//   <App city={pragueCity} />
-// )
-
 
 ReactDOM.render(
     <Router>
@@ -47,4 +44,13 @@ ReactDOM.render(
     </Router>
     , document.getElementById('root')
 );
+ReactDOM.render(
+  <HeaderNavigation />
+  , document.getElementById('header')
+);
+ReactDOM.render(
+  <Footer />
+  , document.getElementById('footer')
+);
+
 registerServiceWorker();
