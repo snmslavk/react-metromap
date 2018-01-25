@@ -9,14 +9,11 @@ class StationList extends Component {
             if (stations.length === 0) {
               return (
                 <li className="list-group-item">
-                    <ul class="list-group">
-                        <li class="list-group-item list-group-item-light">Choose a map:</li>
-                        <li class="list-group-item list-group-item-dark">Czech Republic</li>
-                        <li class="list-group-item list-group-item-light"><a class="text-muted" href="/prague">Prague</a></li>
-                        <li class="list-group-item list-group-item-dark">France</li>
-                        <li class="list-group-item list-group-item-light"><a class="text-muted" href="/">Paris</a></li>
-                        <li class="list-group-item list-group-item-dark">Portugal</li>
-                        <li class="list-group-item list-group-item-light"><a class="text-muted" href="/">Lisbon</a></li>
+                    <ul className="list-group">
+                        <li className="list-group-item list-group-item-light">Choose a map:</li>
+                        <li className="list-group-item list-group-item-light"><a className="text-muted" href="/prague">Prague</a></li>
+                        <li className="list-group-item list-group-item-light"><a className="text-muted" href="/">Paris</a></li>
+                        <li className="list-group-item list-group-item-light"><a className="text-muted" href="/">Lisbon</a></li>
                     </ul>
                 </li>
               );
