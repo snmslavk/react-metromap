@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ShareButtons from './ShareButtons';
 
 class Footer extends Component {
     render() {
@@ -24,7 +25,7 @@ class Footer extends Component {
                     </ul>
                 </div>
                 <div className="col-6 col-md">
-        
+                    <ShareButtons />
                 </div>
                 <div className="col-6 col-md">
         
