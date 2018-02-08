@@ -1,7 +1,19 @@
 import React, { Component } from 'react';
 
 class FooterContentColumn2 extends Component {
-    render() {
+
+    GetCityInfo(city) {
+        switch (city) {
+            case 'Prague':
+              return this.GetPragueInfo();
+            case 'Lisbon':
+              return null;
+            default:
+              return null;
+        }
+    }
+
+    GetPragueInfo() {
         return (
             <div>
                 <h2 className="display-5">Prices</h2>
@@ -45,6 +57,13 @@ class FooterContentColumn2 extends Component {
             </div>
         );
     }
+
+    render() {
+        let {city} = this.props;
+        return (
+                this.GetCityInfo(city)
+        );
+    }    
 }
 
 export default FooterContentColumn2;

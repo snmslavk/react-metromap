@@ -13,17 +13,15 @@ class HeaderNavigation extends Component {
                     <li className="nav-item">
                         <a className="nav-link" href="/about">About</a>
                     </li>
-                    <li className="nav-item">
-                        <a className="nav-link" href="/faq">FAQ</a>
-                    </li>          
                     <li className="nav-item dropdown">
                         <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Cities
                         </a>
                         <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a className="dropdown-item" href="/prague">Prague</a>
-                            <a className="dropdown-item" href="/">Paris</a>
-                            <a className="dropdown-item" href="/">Lisbon</a>
+                            <a className="dropdown-item" href="/paris">Paris</a>
+                            <a className="dropdown-item" href="/lisbon">Lisbon</a>
+                            <a className="dropdown-item" href="/lisbon">Amsterdam</a>
                         </div>
                     </li>
                     </ul>

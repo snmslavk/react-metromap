@@ -12,8 +12,9 @@ class StationList extends Component {
                     <ul className="list-group">
                         <li className="list-group-item list-group-item-light">Choose a map:</li>
                         <li className="list-group-item list-group-item-light"><a className="text-muted" href="/prague">Prague</a></li>
-                        <li className="list-group-item list-group-item-light"><a className="text-muted" href="/">Paris</a></li>
-                        <li className="list-group-item list-group-item-light"><a className="text-muted" href="/">Lisbon</a></li>
+                        <li className="list-group-item list-group-item-light"><a className="text-muted" href="/paris">Paris</a></li>
+                        <li className="list-group-item list-group-item-light"><a className="text-muted" href="/lisbon">Lisbon</a></li>
+                        <li className="list-group-item list-group-item-light"><a className="text-muted" href="/amsterdam">Amsterdam</a></li>
                     </ul>
                 </li>
               );

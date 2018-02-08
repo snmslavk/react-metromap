@@ -38,6 +38,8 @@ ReactDOM.render(
         <Route path="/about" component={About}/>
         <Route path="/prague" render={(props) => <App city="Prague" {...props}/>}/>
         <Route path="/lisbon" render={(props) => <App city="Lisbon" {...props}/>}/>
+        <Route path="/paris" render={(props) => <App city="Paris" {...props}/>}/>
+        <Route path="/amsterdam" render={(props) => <App city="Amsterdam" {...props}/>}/>
         <Route component={NoMatch}/>
       </Switch>
     </div>
