@@ -4,7 +4,7 @@ import ShareButtons from './ShareButtons';
 class Footer extends Component {
     render() {
         return (
-            <footer className="container py-5">
+            <footer className="container-fluid py-5 bg-dark text-white">
                 <div className="row">
                 <div className="col-12 col-md">
                     <small className="d-block mb-3 text-muted">© 2018</small>

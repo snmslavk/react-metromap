@@ -61,7 +61,7 @@ class App extends Component {
         <div className="container-fluid">
           <div className="row">
             <div className="col-md-10  offset-md-2">
-              <div className="row pt-2">
+              <div className="row">
                 <div className="col-md-6">
                   <StationCombobox onChangeSelection={this.handleSelectStationFrom.bind(this)} stationName={stationFrom} stationList={stationList} stationType="from"/>
                 </div>
@@ -96,7 +96,7 @@ class App extends Component {
             <div className="col-lg-6">
               <div className="mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
                 <div className="my-3 p-3">
-                <FooterContentColumn2 city={city}/>
+                  <FooterContentColumn2 city={city}/>
                 </div>
               </div>
             </div>
