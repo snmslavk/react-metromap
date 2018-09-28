@@ -3,14 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "bootstrap": "^4.0.0",
-    "jquery": "^3.2.1",
+    "bootstrap": "^4.1.3",
+    "jquery": "^3.3.1",
     "paper": "^0.11.5",
     "pathfinding": "^0.4.18",
-    "popper.js": "^1.12.9",
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0",
-    "react-router-dom": "^4.2.2",
+    "popper.js": "^1.14.4",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
+    "react-router-dom": "^4.3.1",
     "react-scripts": "1.0.17"
   },
   "scripts": {
@@ -22,6 +22,6 @@
     "deploy": "gh-pages -d build"
   },
   "devDependencies": {
-    "gh-pages": "^1.1.0"
+    "gh-pages": "^1.2.0"
   }
 }
