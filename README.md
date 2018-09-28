@@ -1,4 +1,4 @@
-## This metro map app
+## This is the metro map pwa app
 [![React metro map](https://i.gyazo.com/cf8e4e6e9e2d83471d47cbc5be84a29f.gif)](https://gyazo.com/cf8e4e6e9e2d83471d47cbc5be84a29f)
 ### `npm start`
 
